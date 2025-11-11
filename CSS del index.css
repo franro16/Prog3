@@ -1,0 +1,73 @@
+body {
+    background-color: #f0f2f5;
+    margin: 0;
+    font-family: sans-serif;
+        padding-top: 50px;
+    text-align: center; 
+}
+
+#loginForm {
+    background-color: white;
+    width: 380px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+    display: block; 
+}
+#inicioSesion{
+    text-align: center;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left; 
+    font-size: 24px;
+    color: #1c1e21;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%; 
+    padding: 12px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #1877f2;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+}
+
+a[href="register.html"] {
+    display: block; 
+    background-color: white; 
+    color: #1877f2; 
+    font-weight: bold;
+    font-size: 18px;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none; 
+    border-radius: 6px;
+    border: 1px solid #1877f2; 
+    margin-top: 10px; 
+}
+
+.form-label {
+    text-align: left;
+    display: block; 
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #606770;
+}
