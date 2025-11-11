@@ -1,0 +1,126 @@
+
+body {
+    background-color: #f8f9fa; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-success {
+    background-color: #28a745 !important; 
+    background-color: #2e7d32;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 30px; 
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 1.25rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#logoutBtn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white; 
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#logoutBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px; 
+    margin: 0 auto;
+    padding-top: 25px;
+}
+
+#welcomeName {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+#reserveForm {
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+    padding: 20px 0; 
+}
+
+.container > div:nth-child(2) > div:nth-child(1) {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 30px;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#reserveForm > div {
+    flex-grow: 1; 
+}
+
+.form-select,
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: white; 
+}
+
+#reserveForm button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; 
+    min-width: 120px; 
+}
+
+.container h5:nth-of-type(2) {
+    margin-bottom: 15px;
+}
+
+.container > div:last-child {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid red;
+}
+
+.container > div:last-child p:first-child { 
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.container > div:last-child p:nth-child(2),
+.container > div:last-child p:nth-child(3) {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 0;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User - Sistema de Turnos Médicos</title>
+    <link rel="stylesheet" href="CSS del user.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Paciente</a>
+    <div class="d-flex">
+      <button id="logoutBtn" class="btn btn-outline-light">Cerrar sesión</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-4">
+  <h4 id="welcomeName">Bienvenido/a</h4>
+
+  <div>
+    <div>
+      <h5>Reservar turno</h5>
+      <form id="reserveForm">
+        <div>
+          <select id="selectDoctor" class="form-select" required></select>
+        </div>
+
+        <div>
+          <input id="date" type="date" class="form-control" required />
+        </div>
+
+        <div>
+          <input id="time" type="time" class="form-control" required />
+        </div>
+
+        <div>
+          <button type="submit">Solicitar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+    
+</body>
+</html>
