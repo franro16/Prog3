@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Sistema de Turnos Médicos</title>
+  <link rel="stylesheet" href=".css/Gral.css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html">
+        <button id="cerrarSesion">Cerrar sesión</button>
+      </a>
+    </nav>
+  </header>
+
+  <main id="mainContent">
+    <section id="doctorSection">
+      <h2>Médicos</h2>
+
+      <div id="doctorCard">
+        <form id="doctorForm" autocomplete="off">
+          <input type="hidden" id="doctorId" />
+
+          <div>
+            <input id="docNombre" placeholder="Nombre" required />
+          </div>
+
+          <div>
+            <input id="docEspecialidad" placeholder="Especialidad" required />
+          </div>
+
+          <div>
+            <input id="docDias" placeholder="Días disponibles (ej: Lun,Mar)" required />
+          </div>
+
+          <div>
+            <button id="guardar" type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="listsRow">
+      <article>
+        <h3>Lista de médicos</h3>
+        <ul id="doctorsList"></ul>
+      </article>
+
+      <article>
+        <h3>Turnos</h3>
+        <p>(A implementar más adelante)</p>
+      </article>
+    </section>
+  </main>
+
+  <script src=".js/admin.js"></script>
+</body>
+</html>
