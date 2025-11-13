@@ -1,114 +1,140 @@
 body {
-    background-color: #f8f9fa; 
-    font-family: Arial, sans-serif;
-    margin: 0;
+      margin: 0;
+      background: #f5f9fc;
+      font-family: "Segoe UI", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+.nav-admin {
+      background: #005ea8;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px auto 0 auto;
+      width: fit-content;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .nav-admin button {
+      background: #fff;
+      color: #0078d4;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-admin button:hover {
+      background: #e2f0ff;
+    }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      background: #fff;
+      margin-top: 30px;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      color: #0078d4;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    form input {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background: #0078d4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    form button:hover {
+      background: #005ea8;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 25px;
+    }
+
+    ul li {
+      background: #f2f6fa;
+      margin: 6px auto;
+      padding: 10px;
+      border-radius: 6px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 20px; }
+      form input { max-width: 100%; }
+      .nav-admin { width: 90%; }
+    }
+
+    .panel-section {
+  display: none;
 }
 
-#mainContent {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto; 
-    padding-top: 30px;
-    padding-bottom: 30px;
+.panel-section.active {
+  display: block;
 }
 
-h4, h5 {
-    color: #343a40;
-    margin-bottom: 15px;
+.acciones {
+  display: inline-flex;
+  gap: 5px;
+  margin-left: 10px;
 }
 
-#navContainer {
-    background-color: #007bff; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 50px;
+.acciones button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 8px;
 }
 
-#brandLink {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
+.acciones button:hover {
+  opacity: 0.8;
 }
 
-#navButtons {
-    display: flex;
-    gap: 10px;
-}
-
-#cerrarSesion {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-#cerrarSesion {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-#doctorCard {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
-    margin-bottom: 25px;
-}
-
-#doctorForm {
-    display: flex;
-    gap: 10px;
-    align-items: stretch;
-}
-
-#doctorForm > div:not(:last-child) {
-    flex-basis: 30%; 
-    flex-grow: 1;
-}
-
-#doctorForm input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
-#doctorForm > div:last-child {
-    flex-basis: 10%; 
-}
-
-#guardar {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-}
-
-#listsRow {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px;
-}
-
-#listsRow > div {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
-}
-
-#doctorsList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+#mostrarContrasenia {
+  padding: 2px 6px;      
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 5px;
 }
