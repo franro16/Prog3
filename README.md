@@ -22,12 +22,19 @@ MockAPI (para simular el backend)
 (Opcional) Frameworks CSS como Bootstrap
 
 🗂️ Estructura del Proyecto
+
 / (raíz)
+
 │── index.html
+
 │── .css/
+
 │     └── estilos.css
+
 │── .js/
+
 │     └── app.js
+
 │── README.md
 
 🧠 Funcionalidades principales
