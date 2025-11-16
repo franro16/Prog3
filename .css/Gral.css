@@ -1,147 +1,106 @@
-/* =======================
-   🎨 VARIABLES GLOBALES
-======================= */
-:root {
-  --color-primario: #0078d4;       /* Azul médico */
-  --color-secundario: #00b894;     /* Verde salud */
-  --color-fondo: #f5f9fc;          /* Fondo claro */
-  --color-texto: #333;
-  --color-blanco: #fff;
-  --color-borde: #dce3eb;
-  --color-error: #e74c3c;
-  --radio: 8px;
-  --sombra: 0 2px 6px rgba(0, 0, 0, 0.1);
-  --transicion: 0.2s ease-in-out;
-}
-
-/* =======================
-   🧱 ESTILOS BASE
-======================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
+/* ======= ESTILOS GENERALES ======= */
 body {
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f2f4f7; /* gris claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* =======================
-   🧭 CONTENEDORES
-======================= */
-main {
-  width: 100%;
-  max-width: 400px;
-  background: var(--color-blanco);
-  padding: 30px;
-  border-radius: var(--radio);
-  box-shadow: var(--sombra);
+/* ======= CONTENEDOR DEL FORM ======= */
+.container, 
+.form-container, 
+.login-container {
+    background: white;
+    width: 360px;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* =======================
-   🧾 FORMULARIOS
-======================= */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
+/* Títulos */
 h1, h2, h3 {
-  text-align: center;
-  color: var(--color-primario);
+    margin-top: 0;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* ======= INPUTS ======= */
+input[type="email"],
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 18px 0;
+    font-size: 15px;
+    border: 1px solid #d0d7e0;
+    border-radius: 8px;
+    background: #f5f8ff;   /* como tu captura */
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26,115,232,0.25);
+    background: white;
+}
+
+/* ======= BOTÓN PRINCIPAL ======= */
+button,
+.btn-primary,
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #1a73e8; /* azul Google */
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover,
+.btn-primary:hover {
+    background: #135fbd;
+}
+
+/* ======= BOTÓN SECUNDARIO ======= */
+button.secondary,
+.btn-secondary {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background: white;
+    color: #1a73e8;
+    border: 2px solid #1a73e8;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button.secondary:hover,
+.btn-secondary:hover {
+    background: #e8f1ff;
+}
+
+/* ======= CENTRAR TODO ======= */
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-input, select, textarea {
-  padding: 10px;
-  border-radius: var(--radio);
-  border: 1px solid var(--color-borde);
-  outline: none;
-  transition: border var(--transicion);
-  font-size: 15px;
-}
-
-input:focus, select:focus, textarea:focus {
-  border-color: var(--color-primario);
-}
-
-/* =======================
-   🧩 BOTONES
-======================= */
-button {
-  background-color: var(--color-primario);
-  color: var(--color-blanco);
-  border: none;
-  border-radius: var(--radio);
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background var(--transicion);
-}
-
-button:hover {
-  background-color: #005fa3;
-}
-
-button.secundario {
-  background-color: var(--color-secundario);
-}
-
-button.secundario:hover {
-  background-color: #009a7a;
-}
-
-/* =======================
-   🔗 ENLACES
-======================= */
-a {
-  color: var(--color-primario);
-  text-decoration: none;
-  transition: color var(--transicion);
-  text-align: center;
-  display: inline-block;
-}
-
-a:hover {
-  color: var(--color-secundario);
-}
-
-/* =======================
-   ⚠️ MENSAJES
-======================= */
-.alerta {
-  background-color: var(--color-error);
-  color: var(--color-blanco);
-  padding: 10px;
-  border-radius: var(--radio);
-  text-align: center;
-  font-size: 14px;
-}
-
-/* =======================
-   📱 RESPONSIVE
-======================= */
-@media (max-width: 600px) {
-  main {
-    max-width: 90%;
-    padding: 20px;
-  }
-
-  button {
-    font-size: 15px;
-  }
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 4px;
 }
