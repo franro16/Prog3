@@ -70,3 +70,51 @@
 //         alert('Ocurrió un error inesperado.');
 //     }
 // }
+// Usamos el mismo endpoint
+const ENDPOINT_USUARIOS = "https://6915deb7465a9144626df544.mockapi.io/usuarios";
+
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // 1. Obtenemos valores
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (!email || !password) {
+            alert("Por favor, ingresa email y contraseña.");
+            return;
+        }
+
+        try {
+            // 2. Obtenemos TODOS los usuarios de MockAPI
+            const respuesta = await fetch(ENDPOINT_USUARIOS);
+            if (!respuesta.ok) throw new Error("Error al conectar con el servidor.");
+            
+            const usuarios = await respuesta.json();
+
+            // 3. Buscamos al usuario que coincida en email Y contraseña
+            const usuarioEncontrado = usuarios.find(user => 
+                user.email === email && user.password === password
+            );
+
+            if (usuarioEncontrado) {
+                // 4. ¡Éxito! Guardamos al usuario en sessionStorage
+                // Usamos JSON.stringify para guardar el objeto completo
+                sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuarioEncontrado));
+                
+                // 5. Redirigimos al panel de usuario
+                window.location.href = "user.html";
+            } else {
+                // 4. Fracaso
+                alert("Email o contraseña incorrectos.");
+            }
+
+        } catch (error) {
+            console.error("Error en el login:", error);
+            alert(`Error: ${error.message}`);
+        }
+    });
+});
