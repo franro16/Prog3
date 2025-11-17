@@ -7,6 +7,8 @@
 
   <link rel="stylesheet" href=".css/Gral.css" />
   <link rel="stylesheet" href=".css/admin.css" />
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -35,76 +37,93 @@
 
   <main id="mainContent">
 
-    <!-- Doctores -->
     <section id="seccion-doctores" class="panel-section active">
-      <h2>Médicos</h2>
+      <h2>Gestión de Médicos</h2>
 
       <div id="tarjetaDoctor">
         <form id="doctorForm" autocomplete="off">
           <input type="hidden" id="doctorId" />
-          <div><input id="docNombre" placeholder="Nombre" required /></div>
-          <div><input id="docEspecialidad" placeholder="Especialidad" required /></div>
-          <div><input id="docDias" placeholder="Días disponibles (ej: Lun,Mar)" required /></div>
-          <div><button id="guardarDoctor" type="submit">Guardar</button></div>
-        </form>
-      </div>
-
-      <section id="filasListas">
-        <article>
-          <h3>Lista de Médicos</h3>
-          <ul id="listaDoctores"></ul>
-        </article>
-      </section>
-    </section>
-
-    <!-- Turnos -->
-    <section id="seccion-turnos" class="panel-section">
-      <h2>Gestión de Turnos</h2>
-
-      <div id="tarjetaTurno">
-        <form id="turnoForm" autocomplete="off">
-          <input type="hidden" id="turnoId" />
-          <div><input id="turnoPaciente" placeholder="Paciente" required /></div>
-          <div><input id="turnoDoctor" placeholder="Médico" required /></div>
-          <div><input id="turnoFecha" type="date" required /></div>
-          <div><input id="turnoHora" type="time" required /></div>
-          <div><button id="guardarTurno" type="submit">Guardar</button></div>
+          <input id="docNombre" placeholder="Nombre" required />
+          <input id="docEspecialidad" placeholder="Especialidad" required />
+          <input id="docDias" placeholder="Días disponibles (ej: Lunes,Miércoles)" required />
+          <button id="guardarDoctor" type="submit">Guardar</button>
+          <button type="button" class="secundario" onclick="document.getElementById('doctorForm').reset(); document.getElementById('doctorId').value='';">Limpiar</button>
         </form>
       </div>
 
       <article>
-        <h3>Lista de Turnos</h3>
-        <ul id="listaTurnos"></ul>
+        <h3>Lista de Médicos</h3>
+        <ul id="listaDoctores"></ul>
       </article>
     </section>
 
-    <!-- Usuarios -->
+    <section id="seccion-turnos" class="panel-section">
+      <h2>Gestión de Turnos</h2>
+
+      <div id="tarjetaTurno">
+        <h3>Editar / Crear Turno</h3>
+        <form id="turnoForm">
+            <input type="hidden" id="turnoId" />
+
+            <div class="form-group">
+                <label for="selectPaciente">Paciente</label>
+                <select id="selectPaciente" required></select>
+            </div>
+            
+            <div class="form-group">
+                <label for="selectDoctorTurno">Médico</label>
+                <select id="selectDoctorTurno" required></select>
+            </div>
+
+            <div class="form-group">
+                <label for="dateTurno">Fecha</label>
+                <input type="date" id="dateTurno" required />
+            </div>
+
+            <div class="form-group">
+                <label for="timeTurno">Horario</label>
+                <select id="timeTurno" required>
+                </select>
+            </div>
+
+            <button id="guardarTurno" type="submit">Guardar Turno</button>
+            <button type="button" class="secundario" onclick="document.getElementById('turnoForm').reset(); document.getElementById('turnoId').value=''; document.getElementById('guardarTurno').textContent='Guardar Turno';">Limpiar</button>
+        </form>
+      </div>
+
+      <article>
+        <h3>Lista de Todos los Turnos</h3>
+        <ul id="listaTurnos" style="width: 100%;"></ul>
+      </article>
+    </section>
+
     <section id="seccion-usuarios" class="panel-section">
       <h2>Gestión de Usuarios</h2>
 
       <div id="tarjetaPaciente">
         <form id="pacienteForm" autocomplete="off">
-          <input type="hidden" id="pacienteId" />
+  <input type="hidden" id="pacienteId" />
+  
+  <input id="pacNombre" placeholder="Nombre" required />
+  <input id="pacEmail" type="email" placeholder="Correo electrónico" required />
+  <input id="pacDni" placeholder="DNI" required />
 
-          <div><input id="pacNombre" placeholder="Nombre" required /></div>
-          <div><input id="pacEmail" type="email" placeholder="Correo electrónico" required /></div>
-          <div><input id="pacDni" placeholder="DNI" required /></div>
+  <div>
+    <label for="pacRol">Rol</label>
+    <select id="pacRol" required>
+      <option value="paciente">Paciente</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
 
-          <div>
-            <label for="pacRol">Rol</label>
-            <select id="pacRol" required>
-              <option value="paciente">Paciente</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div>
-
-          <div style="display: flex; align-items: center;">
-            <input id="pacPassword" type="password" placeholder="Contraseña" required style="flex:1;" />
-            <button type="button" id="mostrarPassword" style="margin-left:6px; padding:4px 6px;">👁️</button>
-          </div>
-
-          <div><button id="guardarPaciente" type="submit">Guardar</button></div>
-        </form>
+  <div style="display: flex; align-items: center;">
+    <input id="pacPassword" type="password" placeholder="Contraseña" required style="flex:1;" />
+    <button type="button" id="mostrarPassword" style="margin-left:6px; padding:4px 6px;">🔒</button>
+  </div>
+  
+  <div><button id="guardarPaciente" type="submit">Guardar</button></div>
+  <button type="button" class="secundario" onclick="document.getElementById('pacienteForm').reset(); document.getElementById('pacienteId').value='';">Limpiar</button>
+</form>
       </div>
 
       <article>
@@ -113,14 +132,19 @@
       </article>
     </section>
 
-    <!-- Dashboard -->
     <section id="seccion-dashboard" class="panel-section">
-      <h2>Dashboard de Estadísticas</h2>
-      <canvas id="graficoTurnos" width="400" height="200"></canvas>
+      <h2>Dashboard de Turnos</h2>
+      <div style="display: flex; gap: 30px; justify-content: center; align-items: flex-start;">
+          <div id="dashboardInfo" style="min-width: 250px;">
+              </div>
+          <div style="width: 100%; max-width: 400px; height: 300px;">
+              <canvas id="graficoTurnos"></canvas> 
+          </div>
+      </div>
     </section>
 
   </main>
 
-  <script src=".js/admin.js"></script>
+  <script src="./.js/admin.js"></script>
 </body>
 </html>

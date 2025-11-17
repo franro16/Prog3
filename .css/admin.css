@@ -1,140 +1,195 @@
-body {
-      margin: 0;
-      background: #f5f9fc;
-      font-family: "Segoe UI", Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+/* ======================================= */
+/* Estilos Generales y de Navegaci贸n */
+/* ======================================= */
 
 .nav-admin {
-      background: #005ea8;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      padding: 15px;
-      border-radius: 10px;
-      margin: 10px auto 0 auto;
-      width: fit-content;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
+    background: #005ea8;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px auto 0;
+    width: fit-content;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
 
-    .nav-admin button {
-      background: #fff;
-      color: #0078d4;
-      border: none;
-      border-radius: 6px;
-      padding: 8px 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+.nav-admin button {
+    background: #fff;
+    color: #0078d4;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
 
-    .nav-admin button:hover {
-      background: #e2f0ff;
-    }
+.nav-admin button:hover {
+    background: #e2f0ff;
+}
 
-    main {
-      width: 100%;
-      max-width: 800px;
-      background: #fff;
-      margin-top: 30px;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+}
 
-    h1, h2, h3 {
-      text-align: center;
-      color: #0078d4;
-    }
+/* Estilo general de los elementos de lista (Contenedor principal) */
+ul li {
+    background: #f2f6fa;
+    margin: 6px auto;
+    padding: 12px 18px;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 750px; 
+    text-align: center;
+    
+    /* FLEXBOX para el LI: Separa Info (Izquierda) y Acciones (Derecha) */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    form input {
-      width: 100%;
-      max-width: 400px;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      background: #0078d4;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    form button:hover {
-      background: #005ea8;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 25px;
-    }
-
-    ul li {
-      background: #f2f6fa;
-      margin: 6px auto;
-      padding: 10px;
-      border-radius: 6px;
-      width: 90%;
-      max-width: 600px;
-      text-align: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    @media (max-width: 600px) {
-      main { padding: 20px; }
-      form input { max-width: 100%; }
-      .nav-admin { width: 90%; }
-    }
-
-    .panel-section {
-  display: none;
+.panel-section {
+    display: none;
 }
 
 .panel-section.active {
-  display: block;
+    display: block;
 }
 
-.acciones {
-  display: inline-flex;
-  gap: 5px;
-  margin-left: 10px;
+/* ======================================= */
+/* ESTILOS DE LISTAS ESPEC脥FICAS Y FLUIDEZ */
+/* ======================================= */
+
+/* Hace que el DIV de la informaci贸n principal crezca, alinee a la izquierda, y tenga padding */
+ul li > div:first-child { 
+    flex-grow: 1; 
+    padding-right: 15px; 
+    text-align: left; 
+    min-width: 50%;
 }
 
-.acciones button {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 4px 8px;
+/* En el turno, el div de informaci贸n principal */
+.turno-item > div:first-child {
+    min-width: 50%; 
 }
 
-.acciones button:hover {
-  opacity: 0.8;
+/* ======================================= */
+/* ESTILOS DE ACCI脫N (Comunes) */
+/* ======================================= */
+
+/* Contenedor Flexbox para agrupar select y botones */
+.turno-acciones {
+    display: flex;
+    align-items: center; 
+    gap: 6px; 
+    flex-shrink: 0; 
+    min-width: 280px; 
+    justify-content: flex-end; 
 }
 
-#mostrarContrasenia {
-  padding: 2px 6px;      
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: 5px;
+/* Estilo para los botones de Editar/Eliminar en todas las listas */
+.turno-acciones button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 6px 12px; 
+    font-size: 0.9em; 
+    font-weight: 600;
+    color: white; 
+    transition: opacity 0.2s;
+    height: 34px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; 
+}
+
+.turno-acciones button:hover {
+    opacity: .8;
+}
+
+/* Colores de botones */
+.btn-editar {
+    background-color: #f39c12; 
+}
+.btn-eliminar {
+    background-color: #e74c3c; 
+}
+
+/* Estilo para el selector de estado (Solo en Turnos) */
+.turno-acciones select.select-estado {
+    padding: 6px 10px; 
+    border-radius: 4px;
+    font-size: 0.85em;
+    min-width: 110px; 
+    height: 34px; 
+}
+
+
+/* ======================================= */
+/* Colores de Estado de Turnos */
+/* ======================================= */
+
+.turno-item {
+    border: 1px solid #ccc;
+    margin-bottom: 8px !important;
+}
+
+.estado-pendiente .badge-estado { color: #f1c40f; font-weight: bold; }
+.estado-confirmado .badge-estado { color: #2ecc71; font-weight: bold; }
+.estado-cancelado .badge-estado { color: #e74c3c; font-weight: bold; }
+.estado-finalizado .badge-estado { color: #3498db; font-weight: bold; }
+
+#pacienteForm input[type="text"],
+#pacienteForm input[type="email"],
+#pacienteForm input[type="password"],
+#pacienteForm input[type="number"], 
+#pacienteForm select { 
+    width: 100% !important; 
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#mostrarPassword { 
+    padding: 2px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+
+@media(max-width: 750px) {
+    ul li {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        max-width: 95%; 
+    }
+    
+    ul li > div:first-child {
+        width: 100%;
+        padding-right: 0;
+        min-width: auto;
+    }
+    
+    .turno-acciones {
+        justify-content: flex-start; 
+        width: 100%; 
+        min-width: auto;
+    }
+    
+    .turno-acciones select.select-estado,
+    .turno-acciones button {
+        height: auto; 
+    }
 }
