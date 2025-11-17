@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mostrar nombre en pantalla si existe el element
     const welcomeEl = document.getElementById("welcomeName");
     if (welcomeEl) {
-        welcomeEl.textContent = `Bienvenido/a, ${usuarioActual.nombre}`;
+        welcomeEl.textContent = Bienvenido/a, ${usuarioActual.nombre};
     } else {
         console.warn("No se encontró #welcomeName en el DOM");
     }
@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
 function mostrarMensaje(texto, tipo = "exito") {
     const cont = document.getElementById("alertContainer");
     if (!cont) {
-        console.log(`[${tipo}] ${texto}`);
+        console.log([${tipo}] ${texto});
         return;
     }
-    cont.innerHTML = `<div class="${tipo}">${texto}</div>`;
+    cont.innerHTML = <div class="${tipo}">${texto}</div>;
     setTimeout(() => cont.innerHTML = "", 3000);
 }
 
@@ -75,7 +75,7 @@ async function cargarDoctores() {
     try {
         const resp = await fetch(ENDPOINT_DOCTORES);
         console.log("Respuesta doctores status:", resp.status);
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        if (!resp.ok) throw new Error(HTTP ${resp.status});
 
         const doctores = await resp.json();
         console.log("Doctores recibidos:", doctores);
@@ -94,7 +94,7 @@ async function cargarDoctores() {
         doctores.forEach(doc => {
             const op = document.createElement("option");
             op.value = doc.id;
-            op.textContent = `${doc.nombre || doc.name || "Sin nombre"} (${doc.especialidad || doc.specialty || ""})`;
+            op.textContent = ${doc.nombre || doc.name || "Sin nombre"} (${doc.especialidad || doc.specialty || ""});
             select.appendChild(op);
         });
 
@@ -110,7 +110,7 @@ function generarHorarios() {
     const horarios = [];
     let hora = 8, minuto = 0;
     while (hora < 20 || (hora === 20 && minuto === 0)) {
-        horarios.push(`${hora.toString().padStart(2, "0")}:${minuto.toString().padStart(2, "0")}`);
+        horarios.push(${hora.toString().padStart(2, "0")}:${minuto.toString().padStart(2, "0")});
         minuto += 30;
         if (minuto === 60) { minuto = 0; hora++; }
     }
@@ -142,7 +142,7 @@ async function cargarHorariosDisponibles() {
         console.log("Fetch -> todos los turnos desde:", ENDPOINT_TURNOS);
         const resp = await fetch(ENDPOINT_TURNOS);
         console.log("Respuesta turnos status:", resp.status);
-        if (!resp.ok) throw new Error(`HTTP ${resp.status} en turnos`);
+        if (!resp.ok) throw new Error(HTTP ${resp.status} en turnos);
 
         const turnos = await resp.json();
         console.log("Turnos recibidos:", turnos);
@@ -196,7 +196,7 @@ async function registrarTurno(e) {
             method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(turno)
         });
         console.log("POST turnos status:", resp.status);
-        if (!resp.ok) throw new Error(`HTTP ${resp.status} al POST`);
+        if (!resp.ok) throw new Error(HTTP ${resp.status} al POST);
 
         mostrarMensaje("Turno registrado con éxito");
         document.getElementById("reserveForm").reset();
@@ -216,7 +216,7 @@ async function cargarMisTurnos() {
     try {
         const resp = await fetch(ENDPOINT_TURNOS);
         console.log("GET turnos status:", resp.status);
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        if (!resp.ok) throw new Error(HTTP ${resp.status});
         const turnos = await resp.json();
         console.log("Turnos totales:", turnos);
 
@@ -242,7 +242,7 @@ async function cargarMisTurnos() {
 async function cancelarTurno(idTurno) {
     if (!confirm("¿Seguro que querés cancelar este turno?")) return;
     try {
-        const resp = await fetch(`${ENDPOINT_TURNOS}/${idTurno}`, { method: "DELETE" });
+        const resp = await fetch(${ENDPOINT_TURNOS}/${idTurno}, { method: "DELETE" });
         console.log("DELETE turno status:", resp.status);
         mostrarMensaje("Turno cancelado correctamente");
         cargarMisTurnos();
