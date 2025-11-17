@@ -3,32 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistema de Turnos Médicos</title>
+    <title>Sistema de Turnos Médicos</title>
     <link rel="stylesheet" href=".css/Gral.css">
 </head>
 <body>
-    
-    <form id="loginForm">
-        <h3 id="inicioSesion">Iniciar sesion</h3>
+
+    <!-- LOGIN -->
+    <form id="loginForm" class="pantalla">
+        <h3>Iniciar sesión</h3>
 
         <div>
-            <label for="email" class="form-label">Email</label>
-            <input id="email" type="email" class="form-label" required />
+            <label>Email</label>
+            <input id="email" type="email" required>
         </div>
 
         <div>
-            <label for="password" class="form-label">Contraseña</label>
-            <input id="password" class="form-label" type="password" required />
+            <label>Contraseña</label>
+            <input id="password" type="password" required>
         </div>
-        
-        <div>
-            <button type="submit">Ingresar</button>
-            <a href="register.html">Registrarse</a>
-        </div>
-        
+
+        <button type="submit">Ingresar</button>
+
+        <p>
+            ¿No tenés cuenta?
+            <button id="irARegistro" type="button" class="link-btn">Crear una cuenta</button>
+        </p>
     </form>
-    
+
+    <!-- REGISTRO -->
+    <form id="registroForm" class="pantalla" style="display:none;">
+        <h3>Registrarse</h3>
+
+        <div>
+            <label>Nombre</label>
+            <input id="regNombre" required>
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input id="regEmail" type="email" required>
+        </div>
+
+        <div>
+            <label>DNI</label>
+            <input id="regDni" required>
+        </div>
+
+        <div>
+            <label>Contraseña</label>
+            <input id="regPassword" type="password" required>
+        </div>
+
+        <button type="submit">Crear cuenta</button>
+
+        <p>
+            ¿Ya tenés cuenta?
+            <button id="irALogin" type="button" class="link-btn">Iniciar sesión</button>
+        </p>
+    </form>
+
+    <script src=".js/index.js"></script>
 </body>
-<script src="auth.js"></script> <script src="login.js"></script> </body>
-</html>
 </html>

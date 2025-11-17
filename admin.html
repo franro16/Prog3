@@ -10,22 +10,36 @@
 </head>
 
 <body>
+  <!-- protección temprana: si no hay sesión o no es admin, redirige -->
+  <script>
+    try {
+      const usuario = JSON.parse(sessionStorage.getItem("usuario"));
+      if (!usuario || usuario.rol !== "admin") {
+        window.location.href = "index.html";
+      }
+    } catch (e) {
+      window.location.href = "index.html";
+    }
+  </script>
+
   <header class="header-admin">
     <h1>Administración del Hospital</h1>
 
     <nav class="nav-admin">
       <button data-section="doctores">👨‍⚕️ Médicos</button>
       <button data-section="turnos">📅 Turnos</button>
-      <button data-section="usuarios">👥 Pacientes</button>
+      <button data-section="usuarios">👥 Usuarios</button>
       <button data-section="dashboard">📊 Dashboard</button>
-      <button id="cerrarSesion">Cerrar sesión</button>
+      <button id="logoutBtn">Cerrar sesión</button>
     </nav>
   </header>
 
   <main id="mainContent">
+
     <!-- Doctores -->
     <section id="seccion-doctores" class="panel-section active">
       <h2>Médicos</h2>
+
       <div id="tarjetaDoctor">
         <form id="doctorForm" autocomplete="off">
           <input type="hidden" id="doctorId" />
@@ -44,7 +58,7 @@
       </section>
     </section>
 
-    <!-- Turnero -->
+    <!-- Turnos -->
     <section id="seccion-turnos" class="panel-section">
       <h2>Gestión de Turnos</h2>
 
@@ -65,35 +79,47 @@
       </article>
     </section>
 
-    <!-- Pacientes -->
+    <!-- Usuarios / Pacientes -->
     <section id="seccion-usuarios" class="panel-section">
-  <h2>Gestión de Pacientes</h2>
+      <h2>Gestión de Usuarios</h2>
 
-  <div id="tarjetaPaciente">
-    <form id="pacienteForm" autocomplete="off">
-      <input type="hidden" id="pacienteId" />
-      <div><input id="pacNombre" placeholder="Nombre" required /></div>
-      <div><input id="pacEmail" type="email" placeholder="Correo electrónico" required /></div>
-      <div><input id="pacDni" placeholder="DNI" required /></div>
-      <div style="display: flex; align-items: center;">
-        <input id="pacPassword" type="password" placeholder="Contraseña" required style="flex:1;" />
-        <button type="button" id="mostrarPassword" style="margin-left:1px;">👁️</button>
+      <div id="tarjetaPaciente">
+        <form id="pacienteForm" autocomplete="off">
+          <input type="hidden" id="pacienteId" />
+
+          <div><input id="pacNombre" placeholder="Nombre" required /></div>
+          <div><input id="pacEmail" type="email" placeholder="Correo electrónico" required /></div>
+          <div><input id="pacDni" placeholder="DNI" required /></div>
+
+          <div>
+            <label for="pacRol">Rol</label>
+            <select id="pacRol" required>
+              <option value="paciente">Paciente</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <div style="display: flex; align-items: center;">
+            <input id="pacPassword" type="password" placeholder="Contraseña" required style="flex:1;" />
+            <button type="button" id="mostrarPassword" style="margin-left:6px; padding:4px 6px;">👁️</button>
+          </div>
+
+          <div><button id="guardarPaciente" type="submit">Guardar</button></div>
+        </form>
       </div>
-      <div><button id="guardarPaciente" type="submit">Guardar</button></div>
-    </form>
-  </div>
 
-  <article>
-    <h3>Lista de Pacientes</h3>
-    <ul id="listaPacientes" style="width: 100%; overflow-x:auto; white-space: nowrap;"></ul>
-  </article>
-</section>
+      <article>
+        <h3>Lista de Usuarios</h3>
+        <ul id="listaPacientes" style="width: 100%;"></ul>
+      </article>
+    </section>
 
     <!-- Dashboard -->
     <section id="seccion-dashboard" class="panel-section">
       <h2>Dashboard de Estadísticas</h2>
       <canvas id="graficoTurnos" width="400" height="200"></canvas>
     </section>
+
   </main>
 
   <script src=".js/admin.js"></script>
