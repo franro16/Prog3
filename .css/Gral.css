@@ -1,22 +1,16 @@
-/* =======================
-   🎨 VARIABLES GLOBALES
-======================= */
 :root {
-  --color-primario: #0078d4;       /* Azul médico */
-  --color-secundario: #00b894;     /* Verde salud */
-  --color-fondo: #f5f9fc;          /* Fondo claro */
+  --color-primario: #0078d4;
+  --color-secundario: #00b894;
+  --color-fondo: #f5f9fc;
   --color-texto: #333;
   --color-blanco: #fff;
   --color-borde: #dce3eb;
   --color-error: #e74c3c;
   --radio: 8px;
-  --sombra: 0 2px 6px rgba(0, 0, 0, 0.1);
-  --transicion: 0.2s ease-in-out;
+  --sombra: 0 2px 6px rgba(0,0,0,.1);
+  --transicion: .2s;
 }
 
-/* =======================
-   🧱 ESTILOS BASE
-======================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,7 +19,7 @@
 }
 
 body {
-  background-color: var(--color-fondo);
+  background: var(--color-fondo);
   color: var(--color-texto);
   min-height: 100vh;
   display: flex;
@@ -35,21 +29,15 @@ body {
   padding: 20px;
 }
 
-/* =======================
-   🧭 CONTENEDORES
-======================= */
 main {
   width: 100%;
-  max-width: 400px;
-  background: var(--color-blanco);
+  max-width: 800px;
+  background: #fff;
   padding: 30px;
   border-radius: var(--radio);
   box-shadow: var(--sombra);
 }
 
-/* =======================
-   🧾 FORMULARIOS
-======================= */
 form {
   display: flex;
   flex-direction: column;
@@ -66,7 +54,9 @@ label {
   margin-bottom: 5px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   padding: 10px;
   border-radius: var(--radio);
   border: 1px solid var(--color-borde);
@@ -75,43 +65,39 @@ input, select, textarea {
   font-size: 15px;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   border-color: var(--color-primario);
 }
 
-/* =======================
-   🧩 BOTONES
-======================= */
 button {
-  background-color: var(--color-primario);
-  color: var(--color-blanco);
+  background: var(--color-primario);
+  color: #fff;
   border: none;
   border-radius: var(--radio);
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  transition: background var(--transicion);
+  transition: .2s;
 }
 
 button:hover {
-  background-color: #005fa3;
+  background: #005fa3;
 }
 
 button.secundario {
-  background-color: var(--color-secundario);
+  background: var(--color-secundario);
 }
 
 button.secundario:hover {
-  background-color: #009a7a;
+  background: #009a7a;
 }
 
-/* =======================
-   🔗 ENLACES
-======================= */
 a {
   color: var(--color-primario);
   text-decoration: none;
-  transition: color var(--transicion);
+  transition: .2s;
   text-align: center;
   display: inline-block;
 }
@@ -120,37 +106,18 @@ a:hover {
   color: var(--color-secundario);
 }
 
-/* =======================
-   ⚠️ MENSAJES
-======================= */
 .alerta {
-  background-color: var(--color-error);
-  color: var(--color-blanco);
+  background: var(--color-error);
+  color: #fff;
   padding: 10px;
   border-radius: var(--radio);
   text-align: center;
   font-size: 14px;
 }
 
-/* =======================
-   📱 RESPONSIVE
-======================= */
-@media (max-width: 600px) {
-  main {
-    max-width: 90%;
-    padding: 20px;
-  }
-
-  button {
-    font-size: 15px;
-  }
-}
-/* =======================
-   🟢 MENSAJES DE ÉXITO
-======================= */
 .exito {
-  background-color: var(--color-secundario);
-  color: var(--color-blanco);
+  background: var(--color-secundario);
+  color: #fff;
   padding: 10px;
   border-radius: var(--radio);
   text-align: center;
@@ -158,11 +125,9 @@ a:hover {
   margin-bottom: 10px;
 }
 
-/* =======================
-   📋 LISTA DE TURNOS
-======================= */
+/* Tarjetas globales */
 .turno-card {
-  background: var(--color-blanco);
+  background: #fff;
   padding: 15px;
   border: 1px solid var(--color-borde);
   border-radius: var(--radio);
@@ -184,3 +149,38 @@ a:hover {
   width: 100%;
 }
 
+
+.container,
+.container-fluid {
+  width: 90%;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.form-control,
+.form-select,
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.badge {
+  font-weight: bold;
+}
+
+.bg-success {
+  background: #28a745 !important;
+}
+
+@media(max-width: 600px) {
+  main {
+    max-width: 90%;
+    padding: 20px;
+  }
+  button {
+    font-size: 15px;
+  }
+}
