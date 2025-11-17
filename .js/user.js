@@ -8,7 +8,6 @@ function mostrarMensaje(texto, tipo = "exito") {
     const container = document.getElementById("alertContainer");
     if (!container) return console.error("Elemento #alertContainer no encontrado.");
     
-   
     container.innerHTML = '';
     
     const div = document.createElement("div");
@@ -24,30 +23,25 @@ function logoutUser() {
     window.location.href = "index.html";
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    
     if (!usuarioActual) {
         logoutUser();
         return;
     }
-    
 
     const welcomeEl = document.getElementById("welcomeName");
     if (welcomeEl) {
         welcomeEl.textContent = `Bienvenido/a, ${usuarioActual.nombre}`;
     }
 
-
     cargarDoctores();
     cargarMisTurnos();
 
     document.getElementById("reserveForm")?.addEventListener("submit", manejarReservaTurno);
-    
     document.getElementById("logoutBtn")?.addEventListener("click", logoutUser);
-    
-    
     document.getElementById("date")?.addEventListener("input", bloquearFinesDeSemana);
+
+    generarOpcionesHorario(); // <- agregada la generación de horarios
 });
 
 async function cargarDoctores() {
@@ -58,7 +52,7 @@ async function cargarDoctores() {
         const resp = await fetch(ENDPOINT_DOCTORES);
         const doctores = await resp.json();
         
-        select.innerHTML = '<option value="">Seleccione un m茅dico</option>';
+        select.innerHTML = '<option value="">Seleccione un médico</option>';
         doctores.forEach(doc => {
             const opt = document.createElement("option");
             opt.value = doc.id;
@@ -69,6 +63,34 @@ async function cargarDoctores() {
     } catch (err) {
         console.error("Error cargando doctores:", err);
         select.innerHTML = '<option value="">Error al cargar</option>';
+    }
+}
+
+function generarOpcionesHorario() {
+    const select = document.getElementById('time');
+    if (!select) return;
+
+    const startHour = 8;        
+    const endHour = 20;         
+    const intervalMinutes = 30; 
+
+    select.innerHTML = '<option value="">Seleccione hora</option>';
+
+    for (let hour = startHour; hour <= endHour; hour++) {
+        for (let minute = 0; minute < 60; minute += intervalMinutes) {
+            if (hour === endHour && minute !== 0) continue;
+
+            const formattedHour = String(hour).padStart(2, '0');
+            const formattedMinute = String(minute).padStart(2, '0');
+            const timeValue = `${formattedHour}:${formattedMinute}`;
+
+            const option = document.createElement('option');
+            option.value = timeValue;
+            option.textContent = timeValue;
+            select.appendChild(option);
+
+            if (hour === endHour) break;
+        }
     }
 }
 
@@ -100,7 +122,7 @@ async function manejarReservaTurno(e) {
         });
 
         if (resp.ok) {
-            mostrarMensaje("Turno solicitado con 茅xito. Pendiente de confirmaci贸n.");
+            mostrarMensaje("Turno solicitado con éxito. Pendiente de confirmación.");
             document.getElementById("reserveForm").reset();
             cargarMisTurnos(); 
         } else {
@@ -108,7 +130,7 @@ async function manejarReservaTurno(e) {
         }
     } catch (err) {
         console.error("Error en la reserva:", err);
-        mostrarMensaje("Error de conexi贸n al intentar reservar.", "alerta");
+        mostrarMensaje("Error de conexión al intentar reservar.", "alerta");
     }
 }
 
@@ -117,7 +139,7 @@ async function cargarMisTurnos() {
     cont.innerHTML = "<p>Cargando mis turnos...</p>";
     
     if (!usuarioActual) {
-        cont.innerHTML = "<p>No se pudo cargar la informaci贸n del usuario.</p>";
+        cont.innerHTML = "<p>No se pudo cargar la información del usuario.</p>";
         return;
     }
 
@@ -132,23 +154,21 @@ async function cargarMisTurnos() {
         const misTurnos = todosTurnos.filter(t => t.pacienteId === usuarioActual.id);
         
         if (!misTurnos.length) {
-            cont.innerHTML = "<p>No ten茅s turnos reservados.</p>";
+            cont.innerHTML = "<p>No tenés turnos reservados.</p>";
             return;
         }
 
         cont.innerHTML = "";
         misTurnos.forEach(t => {
             const doctor = mapDoctores.get(t.doctorId);
-            const nombreDoctor = doctor ? `${doctor.nombre} (${doctor.especialidad})` : `[M茅dico no encontrado]`;
+            const nombreDoctor = doctor ? `${doctor.nombre} (${doctor.especialidad})` : `[Médico no encontrado]`;
 
             const c = document.createElement("div"); 
             c.className = `turno-card estado-${t.estado.toLowerCase()}`; 
             
-           
             const botonCancelar = t.estado === "Pendiente" 
                 ? `<button class="secundario" onclick="cancelarTurno('${t.id}')">Cancelar turno</button>`
                 : `<span class="estado-mensaje">El turno ${t.estado} no se puede cancelar.</span>`;
-
 
             c.innerHTML = `<h4>Turno con ${nombreDoctor}</h4>
                 <p><strong>Fecha:</strong> ${t.fecha}</p>
@@ -164,7 +184,7 @@ async function cargarMisTurnos() {
 }
 
 async function cancelarTurno(idTurno) {
-    if (!confirm("驴Seguro que quer茅s cancelar este turno?")) return;
+    if (!confirm("¿Seguro que querés cancelar este turno?")) return;
     try {
         const resp = await fetch(`${ENDPOINT_TURNOS}/${idTurno}`, {
             method: "PUT",
@@ -180,7 +200,7 @@ async function cancelarTurno(idTurno) {
         }
     } catch (err) {
         console.error("Error cancelando turno:", err);
-        mostrarMensaje("Error de conexi贸n al intentar cancelar el turno.", "alerta");
+        mostrarMensaje("Error de conexión al intentar cancelar el turno.", "alerta");
     }
 }
 
@@ -192,7 +212,7 @@ function bloquearFinesDeSemana(e) {
     const diaSemana = d.getDay();
 
     if (diaSemana === 0 || diaSemana === 6) {
-        mostrarMensaje("No se pueden seleccionar s谩bados ni domingos.", "alerta");
+        mostrarMensaje("No se pueden seleccionar sábados ni domingos.", "alerta");
         e.target.value = "";
     }
 }
