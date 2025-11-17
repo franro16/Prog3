@@ -5,10 +5,11 @@
   --color-texto: #333;
   --color-blanco: #fff;
 
-  --glass-bg: rgba(255, 255, 255, 0.2);
-  --glass-blur: blur(10px);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  /* Glassmorphism Potenciado */
+  --glass-bg: rgba(255, 255, 255, 0.2); 
+  --glass-blur: blur(16px); /* AUMENTADO: Mayor desenfoque */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.8); /* AUMENTADO: Borde más brillante */
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25); /* AUMENTADO: Sombra más fuerte */
 
   --color-borde: #dce3eb;
   --color-error: #e74c3c;
@@ -60,6 +61,30 @@ label {
   color: #005ea8;
 }
 
+/* Aplicación del Glassmorphism al contenedor principal del Login/Registro */
+.pantalla {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur); /* Usa el nuevo blur */
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radio);
+  border: var(--glass-border); /* Usa el nuevo borde brillante */
+  box-shadow: var(--glass-shadow); /* Usa la nueva sombra */
+
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pantalla > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Inputs y Selects Globales */
 input,
 select,
 textarea {
@@ -81,6 +106,7 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.2);
 }
 
+/* Botones Globales */
 button {
   background: var(--color-primario);
   color: var(--color-blanco);
