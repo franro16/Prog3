@@ -7,19 +7,34 @@
     <title>Reservar Turno - Sistema Médico</title>
 
     <link rel="stylesheet" href="./.css/Gral.css" />
-</head>
+    <link rel="stylesheet" href="./.css/user.css" /> </head>
 
 <body>
-
-    <a id="logoutBtn">
-        <button class="secundario">Cerrar sesión</button>
-    </a>
+    
+    <script>
+        try {
+            const usuario = JSON.parse(sessionStorage.getItem("usuario"));
+            
+            if (!usuario || usuario.rol !== "paciente") {
+                
+                window.location.href = "index.html";
+            }
+        } catch (e) {            
+            window.location.href = "index.html";
+        }
+    </script>
+    
+    <header>
+        <a id="logoutBtn">
+            <button class="secundario">Cerrar sesión</button>
+        </a>
+    </header>
+    
 
     <main>
 
         <h2 id="welcomeName">Bienvenido/a</h2>
 
-        <!-- Contenedor de alertas -->
         <div id="alertContainer"></div>
 
         <h3>Reservar un turno</h3>
@@ -38,23 +53,32 @@
 
             <div class="form-group">
                 <label for="time">Seleccione un horario</label>
-                <select id="time" required></select>
+                <select id="time" required>
+                    <option value="">Seleccione hora</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                </select>
             </div>
 
             <button type="submit">Solicitar turno</button>
 
         </form>
 
-        <h3 style="margin-top: 25px;">Mis turnos</h3>
+        <hr>
 
-        <div id="misTurnos"></div>
+        <h3>Mis Turnos</h3>
+        <div id="misTurnos" class="turnos-container">
+            </div>
+
 
     </main>
 
-<script src=".js/user.js"></script>
-
-
-
+    <script src="./.js/user.js"></script>
 </body>
 
 </html>
