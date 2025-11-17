@@ -1,33 +1,135 @@
-/* ======================================= */
-/* Estilos Generales y de Navegaci贸n */
-/* ======================================= */
+body {
+    background: linear-gradient(135deg, #e0f7fa, #b3e5fc); 
+    min-height: 100vh;
+}
+
+main#mainContent {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-admin {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+}
+
+.header-admin h1 {
+    color: #005ea8;
+    margin-bottom: 10px;
+}
 
 .nav-admin {
-    background: #005ea8;
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin: 10px auto 0;
     width: fit-content;
-    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.4); 
 }
 
 .nav-admin button {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.7); 
     color: #0078d4;
     border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
+    border-radius: 8px;
+    padding: 10px 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: .2s;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-admin button:hover {
-    background: #e2f0ff;
+    background: rgba(226, 240, 255, 0.9); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+h2, h3 {
+    color: #005ea8;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(0, 120, 212, 0.2);
+    padding-bottom: 5px;
+}
+
+
+#tarjetaDoctor, #tarjetaTurno, #tarjetaPaciente {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+#doctorForm input, #doctorForm select, 
+#turnoForm input, #turnoForm select,
+#pacienteForm input, #pacienteForm select {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 120, 212, 0.3);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+#doctorForm input:focus, #doctorForm select:focus, 
+#turnoForm input:focus, #turnoForm select:focus,
+#pacienteForm input:focus, #pacienteForm select:focus {
+    border-color: #0078d4;
+    outline: none;
+    background: #fff;
+}
+
+
+button[type="submit"], #guardarDoctor, #guardarTurno, #guardarPaciente {
+    background: #0078d4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover, #guardarDoctor:hover, #guardarTurno:hover, #guardarPaciente:hover {
+    background: #005ea8;
+    transform: translateY(-1px);
+}
+
+.secundario {
+    background: #bdc3c7;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.secundario:hover {
+    background: #95a5a6;
 }
 
 ul {
@@ -36,20 +138,29 @@ ul {
     margin-top: 25px;
 }
 
-/* Estilo general de los elementos de lista (Contenedor principal) */
+
 ul li {
-    background: #f2f6fa;
-    margin: 6px auto;
-    padding: 12px 18px;
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin: 10px auto;
+    padding: 15px 20px;
+    border-radius: 12px;
     width: 90%;
-    max-width: 750px; 
+    max-width: 800px;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5); 
+    color: #333; 
     
-    /* FLEXBOX para el LI: Separa Info (Izquierda) y Acciones (Derecha) */
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+ul li:hover {
+    background: rgba(255, 255, 255, 0.5); 
 }
 
 .panel-section {
@@ -60,120 +171,129 @@ ul li {
     display: block;
 }
 
-/* ======================================= */
-/* ESTILOS DE LISTAS ESPEC脥FICAS Y FLUIDEZ */
-/* ======================================= */
 
-/* Hace que el DIV de la informaci贸n principal crezca, alinee a la izquierda, y tenga padding */
-ul li > div:first-child { 
-    flex-grow: 1; 
-    padding-right: 15px; 
-    text-align: left; 
+ul li > div:first-child {
+    flex-grow: 1;
+    padding-right: 15px;
+    text-align: left;
     min-width: 50%;
 }
 
-/* En el turno, el div de informaci贸n principal */
+
 .turno-item > div:first-child {
-    min-width: 50%; 
+    min-width: 50%;
 }
 
-/* ======================================= */
-/* ESTILOS DE ACCI脫N (Comunes) */
-/* ======================================= */
 
-/* Contenedor Flexbox para agrupar select y botones */
 .turno-acciones {
     display: flex;
-    align-items: center; 
-    gap: 6px; 
-    flex-shrink: 0; 
-    min-width: 280px; 
-    justify-content: flex-end; 
+    align-items: center;
+    gap: 8px; 
+    flex-shrink: 0;
+    min-width: 280px;
+    justify-content: flex-end;
 }
 
-/* Estilo para los botones de Editar/Eliminar en todas las listas */
 .turno-acciones button {
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    padding: 6px 12px; 
-    font-size: 0.9em; 
+    padding: 8px 14px; 
+    font-size: 0.9em;
     font-weight: 600;
-    color: white; 
-    transition: opacity 0.2s;
-    height: 34px; 
-    display: flex; 
+    color: white;
+    transition: opacity 0.2s, transform 0.2s;
+    height: 38px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    white-space: nowrap; 
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .turno-acciones button:hover {
-    opacity: .8;
+    opacity: .9;
+    transform: translateY(-1px);
 }
 
-/* Colores de botones */
+
 .btn-editar {
-    background-color: #f39c12; 
+    background-color: #ffb347; 
 }
 .btn-eliminar {
-    background-color: #e74c3c; 
+    background-color: #ff6b6b; 
 }
 
-/* Estilo para el selector de estado (Solo en Turnos) */
+
 .turno-acciones select.select-estado {
-    padding: 6px 10px; 
-    border-radius: 4px;
-    font-size: 0.85em;
-    min-width: 110px; 
-    height: 34px; 
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    min-width: 120px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 120, 212, 0.3);
 }
 
 
-/* ======================================= */
-/* Colores de Estado de Turnos */
-/* ======================================= */
 
 .turno-item {
-    border: 1px solid #ccc;
-    margin-bottom: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.5); 
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    margin-bottom: 10px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.estado-pendiente .badge-estado { color: #f1c40f; font-weight: bold; }
-.estado-confirmado .badge-estado { color: #2ecc71; font-weight: bold; }
-.estado-cancelado .badge-estado { color: #e74c3c; font-weight: bold; }
-.estado-finalizado .badge-estado { color: #3498db; font-weight: bold; }
 
-#pacienteForm input[type="text"],
-#pacienteForm input[type="email"],
-#pacienteForm input[type="password"],
-#pacienteForm input[type="number"], 
-#pacienteForm select { 
-    width: 100% !important; 
-    box-sizing: border-box; 
-    margin-bottom: 10px; 
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+.estado-pendiente .badge-estado { color: #f1c40f; font-weight: 700; background: rgba(241, 196, 15, 0.1); padding: 4px 8px; border-radius: 4px; }
+.estado-confirmado .badge-estado { color: #2ecc71; font-weight: 700; background: rgba(46, 204, 113, 0.1); padding: 4px 8px; border-radius: 4px; }
+.estado-cancelado .badge-estado { color: #e74c3c; font-weight: 700; background: rgba(231, 76, 60, 0.1); padding: 4px 8px; border-radius: 4px; }
+.estado-finalizado .badge-estado { color: #3498db; font-weight: 700; background: rgba(52, 152, 219, 0.1); padding: 4px 8px; border-radius: 4px; }
+
+
+#pacienteForm input, #pacienteForm select {
+    margin-bottom: 10px;
 }
 
-#mostrarPassword { 
-    padding: 2px 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #fff;
+#mostrarPassword {
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 120, 212, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     font-size: 16px;
     margin-left: 5px;
+    transition: background 0.3s;
+}
+
+#mostrarPassword:hover {
+    background: rgba(226, 240, 255, 0.9);
+}
+
+
+#seccion-dashboard > div {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#dashboardInfo {
+    color: #333;
 }
 
 
 @media(max-width: 750px) {
     ul li {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
         align-items: flex-start;
-        max-width: 95%; 
+        max-width: 95%;
     }
     
     ul li > div:first-child {
@@ -183,13 +303,34 @@ ul li > div:first-child {
     }
     
     .turno-acciones {
-        justify-content: flex-start; 
-        width: 100%; 
+        justify-content: flex-start;
+        width: 100%;
         min-width: auto;
+        flex-wrap: wrap;
     }
     
     .turno-acciones select.select-estado,
     .turno-acciones button {
-        height: auto; 
+        height: auto;
+    }
+
+    .nav-admin {
+        padding: 10px;
+    }
+    
+    .nav-admin button {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    #seccion-dashboard > div {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    #dashboardInfo, #seccion-dashboard > div > div {
+        width: 100% !important;
+        max-width: 100% !important;
     }
 }
