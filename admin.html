@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  <!-- protección temprana: si no hay sesión o no es admin, redirige -->
   <script>
     try {
       const usuario = JSON.parse(sessionStorage.getItem("usuario"));
@@ -79,7 +78,7 @@
       </article>
     </section>
 
-    <!-- Usuarios / Pacientes -->
+    <!-- Usuarios -->
     <section id="seccion-usuarios" class="panel-section">
       <h2>Gestión de Usuarios</h2>
 
