@@ -1,9 +1,5 @@
-/* ======================================= */
-/* Estilos Generales y de Navegación */
-/* ======================================= */
-
 body {
-    background: linear-gradient(135deg, #e0f7fa, #b3e5fc); /* Fondo suave */
+    background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
     min-height: 100vh;
 }
 
@@ -14,13 +10,13 @@ main#mainContent {
 }
 
 .header-admin {
-    background: rgba(255, 255, 255, 0.1); /* Ligera transparencia */
-    backdrop-filter: blur(8px); /* Efecto clave Glassmorphism */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding: 15px 0;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -30,7 +26,7 @@ main#mainContent {
 }
 
 .nav-admin {
-    background: rgba(255, 255, 255, 0.2); /* Transparencia para el nav */
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: flex;
@@ -41,12 +37,12 @@ main#mainContent {
     border-radius: 12px;
     margin: 10px auto 0;
     width: fit-content;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Borde sutil */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .nav-admin button {
-    background: rgba(255, 255, 255, 0.7); /* Botones más transparentes */
+    background: rgba(255, 255, 255, 0.7);
     color: #0078d4;
     border: none;
     border-radius: 8px;
@@ -58,7 +54,7 @@ main#mainContent {
 }
 
 .nav-admin button:hover {
-    background: rgba(226, 240, 255, 0.9); /* Efecto hover claro */
+    background: rgba(226, 240, 255, 0.9);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -70,7 +66,7 @@ h2, h3 {
     padding-bottom: 5px;
 }
 
-/* Estilo general para las tarjetas de formulario y contenido */
+
 #tarjetaDoctor, #tarjetaTurno, #tarjetaPaciente {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
@@ -82,7 +78,7 @@ h2, h3 {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Estilo para los inputs y selects dentro de los formularios */
+
 #doctorForm input, #doctorForm select, 
 #turnoForm input, #turnoForm select,
 #pacienteForm input, #pacienteForm select {
@@ -104,7 +100,7 @@ h2, h3 {
     background: #fff;
 }
 
-/* Botones Generales */
+
 button[type="submit"], #guardarDoctor, #guardarTurno, #guardarPaciente {
     background: #0078d4;
     color: white;
@@ -142,9 +138,9 @@ ul {
     margin-top: 25px;
 }
 
-/* Estilo Glassmorphism para los elementos de lista (Contenedor principal) */
+
 ul li {
-    background: rgba(255, 255, 255, 0.3); /* Fondo más claro y transparente */
+    background: rgba(255, 255, 255, 0.3); 
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     margin: 10px auto;
@@ -154,8 +150,8 @@ ul li {
     max-width: 800px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Borde claro */
-    color: #333; /* Color de texto más visible */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #333;
     
     display: flex;
     justify-content: space-between;
@@ -164,7 +160,7 @@ ul li {
 }
 
 ul li:hover {
-    background: rgba(255, 255, 255, 0.5); /* Más opaco al pasar el mouse */
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .panel-section {
@@ -175,56 +171,48 @@ ul li:hover {
     display: block;
 }
 
-/* ======================================= */
-/* ESTILOS DE LISTAS ESPECÍFICAS Y FLUIDEZ (AJUSTE PARA LISTA DE TURNOS) */
-/* ======================================= */
 
-/* Contenedor de la información del turno (lado izquierdo) */
 ul li > div:first-child {
     flex-grow: 1;
     padding-right: 15px;
     text-align: left;
     min-width: 50%;
     
-    /* AJUSTES PARA VISUALIZACIÓN DETALLADA */
+    
     display: flex;
     flex-direction: column;
     gap: 4px; 
 }
 
-/* Estilo para cada línea de información (Doctor, Paciente, etc.) */
+
 ul li > div:first-child p {
     margin: 0;
     font-size: 0.95em; 
 }
 
-/* Estilo para las etiquetas (strong) */
+
 ul li > div:first-child strong {
     font-weight: 600;
     margin-right: 5px;
     color: #005ea8; 
 }
 
-/* En el turno, el div de información principal */
+
 .turno-item > div:first-child {
     min-width: 50%;
 }
 
-/* ======================================= */
-/* ESTILOS DE ACCIÓN (Comunes) */
-/* ======================================= */
 
-/* Contenedor Flexbox para agrupar select y botones */
 .turno-acciones {
     display: flex;
     align-items: center;
     gap: 8px; 
     flex-shrink: 0;
     min-width: 280px; 
-    justify-content: flex-end; /* Alineamos a la derecha */
+    justify-content: flex-end; 
 }
 
-/* Estilo para los botones de Editar/Eliminar en todas las listas */
+
 .turno-acciones button {
     border: none;
     border-radius: 6px;
@@ -255,7 +243,7 @@ ul li > div:first-child strong {
     background-color: #ff6b6b; 
 }
 
-/* Estilo para el selector de estado (Solo en Turnos) */
+
 .turno-acciones select.select-estado {
     padding: 6px 10px;
     border-radius: 6px;
@@ -264,13 +252,11 @@ ul li > div:first-child strong {
     height: 38px;
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 120, 212, 0.3);
-    align-self: center; /* Alineación vertical */
+    align-self: center; 
 }
 
 
-/* ======================================= */
-/* Colores de Estado de Turnos */
-/* ======================================= */
+
 
 .turno-item {
     border: 1px solid rgba(255, 255, 255, 0.5); 
@@ -324,7 +310,7 @@ ul li > div:first-child strong {
 }
 
 
-/* Estilos para la sección de Dashboard */
+
 #seccion-dashboard > div {
     display: flex; 
     gap: 30px; 

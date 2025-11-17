@@ -5,11 +5,10 @@
   --color-texto: #333;
   --color-blanco: #fff;
 
-  /* Glassmorphism Potenciado */
   --glass-bg: rgba(255, 255, 255, 0.2); 
-  --glass-blur: blur(16px); /* AUMENTADO: Mayor desenfoque */
-  --glass-border: 1px solid rgba(255, 255, 255, 0.8); /* AUMENTADO: Borde más brillante */
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25); /* AUMENTADO: Sombra más fuerte */
+  --glass-blur: blur(16px); 
+  --glass-border: 1px solid rgba(255, 255, 255, 0.8); 
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25); 
 
   --color-borde: #dce3eb;
   --color-error: #e74c3c;
@@ -61,14 +60,13 @@ label {
   color: #005ea8;
 }
 
-/* Aplicación del Glassmorphism al contenedor principal del Login/Registro */
 .pantalla {
   background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur); /* Usa el nuevo blur */
+  backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radio);
-  border: var(--glass-border); /* Usa el nuevo borde brillante */
-  box-shadow: var(--glass-shadow); /* Usa la nueva sombra */
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
 
   width: 100%;
   max-width: 400px;
@@ -84,7 +82,6 @@ label {
   gap: 5px;
 }
 
-/* Inputs y Selects Globales */
 input,
 select,
 textarea {
@@ -106,7 +103,6 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.2);
 }
 
-/* Botones Globales */
 button {
   background: var(--color-primario);
   color: var(--color-blanco);
@@ -226,4 +222,44 @@ a:hover {
   button {
     font-size: 15px;
   }
+}
+
+.logo-container {
+    position: fixed; 
+    top: 20px;       
+    left: 20px;      
+    z-index: 1000;
+}
+
+.app-logo {
+    width: 200px; 
+    height: auto; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5); 
+    padding: 5px;
+}
+
+
+@media(max-width: 600px) {
+    .app-logo {
+        width: 60px;
+    }
+}
+
+.creadores {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    color: #777;
+    text-align: right;
+    line-height: 1.4;
+}
+
+.creadores strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 1em;
+    color: #555;
 }

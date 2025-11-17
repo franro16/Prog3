@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Turnos Médicos</title>
     <link rel="stylesheet" href=".css/Gral.css">
+    <style>
+        .creadores {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8em;
+            color: #777;
+            text-align: right;
+            line-height: 1.4;
+        }
+        .creadores strong {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 1em;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- LOGIN -->
+    <div class="logo-container">
+        <img src="Resources\utn-logo.png" alt="Logo de la Clínica" class="app-logo">
+    </div>
+    
     <form id="loginForm" class="pantalla">
         <h3>Iniciar sesión</h3>
 
@@ -30,7 +50,7 @@
         </p>
     </form>
 
-    <!-- REGISTRO -->
+
     <form id="registroForm" class="pantalla" style="display:none;">
         <h3>Registrarse</h3>
 
@@ -61,6 +81,15 @@
             <button id="irALogin" type="button" class="link-btn">Iniciar sesión</button>
         </p>
     </form>
+
+    <div class="creadores">
+        <strong>Desarrollado por:</strong>
+        Victoria Basso Peretti<br>
+        Heredia Agustin<br>
+        Romero Franco Isaias
+        <strong>ChatGPT y Gemini
+            <br>Gracias por tanto, perdon por tan poco</strong>
+    </div>
 
     <script src=".js/index.js"></script>
 </body>

@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("logoutBtn")?.addEventListener("click", logoutUser);
     document.getElementById("date")?.addEventListener("input", bloquearFinesDeSemana);
 
-    generarOpcionesHorario(); // <- agregada la generación de horarios
+    generarOpcionesHorario();
 });
 
 async function cargarDoctores() {
@@ -70,8 +70,8 @@ function generarOpcionesHorario() {
     const select = document.getElementById('time');
     if (!select) return;
 
-    const startHour = 8;        
-    const endHour = 20;         
+    const startHour = 8; 
+    const endHour = 20; 
     const intervalMinutes = 30; 
 
     select.innerHTML = '<option value="">Seleccione hora</option>';

@@ -1,10 +1,8 @@
 const API = "https://6915deb7465a9144626df544.mockapi.io/usuarios";
 
-// obtener pantallas
 const loginForm = document.getElementById("loginForm");
 const registroForm = document.getElementById("registroForm");
 
-// ====== CAMBIO DE PANTALLAS ======
 document.getElementById("irARegistro").addEventListener("click", () => {
     loginForm.style.display = "none";
     registroForm.style.display = "block";
@@ -15,7 +13,6 @@ document.getElementById("irALogin").addEventListener("click", () => {
     loginForm.style.display = "block";
 });
 
-// ====== LOGIN ======
 loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -32,10 +29,8 @@ loginForm.addEventListener("submit", async (e) => {
         return;
     }
 
-    // guardar sesión
     sessionStorage.setItem("usuario", JSON.stringify(encontrado));
 
-    // enviar según rol
     if (encontrado.rol === "admin") {
         window.location.href = "admin.html";
     } else {
@@ -43,7 +38,6 @@ loginForm.addEventListener("submit", async (e) => {
     }
 });
 
-// ====== REGISTRO ======
 registroForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
