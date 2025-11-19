@@ -1,20 +1,26 @@
-// -------------------------------------------------------
+/**
+ * Esto hace el archivo: Lógica del Paciente.
+ * FUNCIONALIDAD:
+ * - Carga y muestra doctores en el select (GET).
+ * - Genera horarios disponibles y no deja elegir fines de semana.
+ * - Reservar Turno: Crea un turno nuevo en la API (POST).
+ * - Mis Turnos: Trae todos los turnos y filtra solo los de este usuario (GET + Filter).
+ * - Cancelar: Permite cancelar turnos si están pendientes (PUT).
+ */
+
 // ENDPOINTS: URLs donde guardamos doctores y turnos
-// -------------------------------------------------------
 const ENDPOINT_DOCTORES = "https://6915deb7465a9144626df544.mockapi.io/doctores";
 const ENDPOINT_TURNOS = "https://691af2052d8d78557570d069.mockapi.io/turnos";
 
-// -------------------------------------------------------
+
 // Recuperamos al usuario que está logueado usando sessionStorage
 // Si no existe, usuarioActual será null
-// -------------------------------------------------------
 const usuarioJson = sessionStorage.getItem("usuario");
 const usuarioActual = usuarioJson ? JSON.parse(usuarioJson) : null;
 
-// -------------------------------------------------------
+
 // Función para mostrar mensajes arriba del formulario
 // Se usa para errores o avisos
-// -------------------------------------------------------
 function mostrarMensaje(texto, tipo = "exito") {
     const contenedor = document.getElementById("alertContainer");
     if (!contenedor) return console.error("Elemento #alertContainer no encontrado.");
@@ -29,10 +35,9 @@ function mostrarMensaje(texto, tipo = "exito") {
     setTimeout(() => div.remove(), 4000);
 }
 
-// -------------------------------------------------------
+
 // Cerrar sesión
 // Borra el usuario guardado y vuelve al login
-// -------------------------------------------------------
 function cerrarSesion() {
     sessionStorage.removeItem("usuario");
     window.location.href = "index.html";
@@ -66,10 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
     generarOpcionesHorario();
 });
 
-// -------------------------------------------------------
+
 // Cargar la lista de doctores desde la API
 // Los pone dentro del <select>
-// -------------------------------------------------------
 async function cargarDoctores() {
     const select = document.getElementById("selectDoctor");
     select.innerHTML = '<option value="">Cargando...</option>';
@@ -92,10 +96,9 @@ async function cargarDoctores() {
     }
 }
 
-// -------------------------------------------------------
+
 // Generar horarios disponibles (8:00 a 20:00 cada 30min)
 // Se cargan dentro del select del horario
-// -------------------------------------------------------
 function generarOpcionesHorario() {
     const select = document.getElementById('time');
     if (!select) return;
@@ -124,12 +127,10 @@ function generarOpcionesHorario() {
     }
 }
 
-// -------------------------------------------------------
 // Cuando el usuario reserva un turno:
 // - valida datos
 // - arma un objeto
 // - lo envía a la API de turnos
-// -------------------------------------------------------
 async function reservarTurno(e) {
     e.preventDefault();
     
@@ -170,10 +171,8 @@ async function reservarTurno(e) {
     }
 }
 
-// -------------------------------------------------------
 // Cargar los turnos del usuario actual
 // Muestra fecha, hora, estado y un botón para cancelar
-// -------------------------------------------------------
 async function cargarMisTurnos() {
     const contenedor = document.getElementById("misTurnos");
     contenedor.innerHTML = "<p>Cargando mis turnos...</p>";
@@ -225,10 +224,9 @@ async function cargarMisTurnos() {
     }
 }
 
-// -------------------------------------------------------
+
 // Cancelar turno (solo si está pendiente)
 // Cambia el estado del turno en la API
-// -------------------------------------------------------
 async function cancelarTurno(idTurno) {
     if (!confirm("¿Seguro que querés cancelar este turno?")) return;
 
@@ -251,9 +249,9 @@ async function cancelarTurno(idTurno) {
     }
 }
 
-// -------------------------------------------------------
+
 // Evita que se elijan sábados o domingos
-// -------------------------------------------------------
+
 function bloquearFinesDeSemana(e) {
     const valor = e.target.value;
     if (!valor) return;

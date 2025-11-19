@@ -1,35 +1,39 @@
-// ---------------------------
+/**
+ * Esto hace el archivo: Lógica de Login y Registro.
+ * FUNCIONALIDAD:
+ * - Permite ver formulario de Login o Registro.
+ * - Login: Verifica credenciales segun la API, guarda sesión y redirige según rol (Admin/User).
+ * - Registro: Verifica que el email no exista y crea el usuario nuevo en la API.
+ */
+
+
 // API donde están guardados los usuarios
-// ---------------------------
 const API_USUARIOS = "https://6915deb7465a9144626df544.mockapi.io/usuarios";
 
-// ---------------------------
 // Tomamos los formularios del HTML
-// ---------------------------
 const formularioLogin = document.getElementById("loginForm");
 const formularioRegistro = document.getElementById("registroForm");
 
-// ---------------------------
+
 // BOTÓN: Pasar de Login → Registro
 // Oculta el login y muestra el formulario de registro
-// ---------------------------
+
 document.getElementById("irARegistro").addEventListener("click", () => {
     formularioLogin.style.display = "none";
     formularioRegistro.style.display = "block";
 });
 
-// ---------------------------
+
 // BOTÓN: Pasar de Registro → Login
 // Vuelve a mostrar el login
-// ---------------------------
+
 document.getElementById("irALogin").addEventListener("click", () => {
     formularioRegistro.style.display = "none";
     formularioLogin.style.display = "block";
 });
 
-// =========================================================
-//               PROCESO DE LOGIN
-// =========================================================
+
+//PROCESO DE LOGIN
 formularioLogin.addEventListener("submit", async (e) => {
     e.preventDefault(); // Evita recargar la página
 
@@ -61,9 +65,8 @@ formularioLogin.addEventListener("submit", async (e) => {
     }
 });
 
-// =========================================================
-//               PROCESO DE REGISTRO
-// =========================================================
+
+//PROCESO DE REGISTRO
 formularioRegistro.addEventListener("submit", async (e) => {
     e.preventDefault();
 

@@ -1,3 +1,13 @@
+/**
+ * Resumen de que se hace aca:
+ * Lógica del Administrador (Gestión Total).
+ * FUNCIONALIDAD:
+ * - Gestión de Médicos:(Crear, Listar, Editar, Borrar).
+ * - Gestión de Pacientes: Lo de arriba para usuarios.
+ * - Gestión de Turnos: Vista global de turnos, edición y cambio de estados (Pendiente/Confirmado/Cancelado).
+ * - Dashboard: Calcula estadísticas y renderiza el gráfico de torta con Chart.js segun cantidad turnos y sus estados.
+ */
+
 const ENDPOINT_DOCTORES = "https://6915deb7465a9144626df544.mockapi.io/doctores";
 const ENDPOINT_USUARIOS = "https://6915deb7465a9144626df544.mockapi.io/usuarios";
 const ENDPOINT_TURNOS = "https://691af2052d8d78557570d069.mockapi.io/turnos"; 
