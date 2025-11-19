@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadatos estándar y configuración responsive -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adminn - Sistema Turnos Médicos</title>
 
+  <!-- Hojas de estilo global y específica del admin -->
   <link rel="stylesheet" href=".css/Gral.css" />
   <link rel="stylesheet" href=".css/admin.css" />
   
+  <!-- Librería Chart.js para los gráficos del dashboard -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
+  <!-- LOGO SUPERIOR -->
+  <!-- Muestra el logotipo institucional arriba del panel -->
   <div class="logo-container">
         <img src="Resources\utn-logo.png" alt="Logo de la Clínica" class="app-logo">
     </div>
     
+  <!-- BLOQUE DE CONTROL DE SESIÓN -->
+  <!-- Verifica que exista un usuario en sessionStorage y que sea admin -->
+  <!-- Si no cumple, lo redirige al login por seguridad -->
   <script>
     try {
       const usuario = JSON.parse(sessionStorage.getItem("usuario"));
@@ -28,10 +36,13 @@
     }
   </script>
 
+  <!-- ENCABEZADO PRINCIPAL DEL PANEL ADMIN -->
+  <!-- Contiene las secciones navegables mediante botones -->
   <header class="header-admin">
     <h1>Administración del Hospital</h1>
 
     <nav class="nav-admin">
+      <!-- Cada botón activa una sección distinta del panel -->
       <button data-section="doctores">👨‍⚕️ Médicos</button>
       <button data-section="turnos">📅 Turnos</button>
       <button data-section="usuarios">👥 Usuarios</button>
@@ -40,108 +51,160 @@
     </nav>
   </header>
 
+  <!-- CONTENEDOR PRINCIPAL DONDE CAMBIAN LAS SECCIONES -->
   <main id="mainContent">
 
+    <!-- SECCIÓN: GESTIÓN DE MÉDICOS -->
     <section id="seccion-doctores" class="panel-section active">
       <h2>Gestión de Médicos</h2>
 
+      <!-- Formulario para crear/editar médicos -->
       <div id="tarjetaDoctor">
         <form id="doctorForm" autocomplete="off">
+          <!-- Se usa input oculto para identificar si se edita -->
           <input type="hidden" id="doctorId" />
+
+          <!-- Campos básicos del médico -->
           <input id="docNombre" placeholder="Nombre" required />
           <input id="docEspecialidad" placeholder="Especialidad" required />
           <input id="docDias" placeholder="Días disponibles (ej: Lunes,Miércoles)" required />
+
+          <!-- Botones principales del formulario -->
           <button id="guardarDoctor" type="submit">Guardar</button>
-          <button type="button" class="secundario" onclick="document.getElementById('doctorForm').reset(); document.getElementById('doctorId').value='';">Limpiar</button>
+          <button type="button" class="secundario"
+            onclick="
+              document.getElementById('doctorForm').reset();
+              document.getElementById('doctorId').value='';
+            ">
+            Limpiar
+          </button>
         </form>
       </div>
 
+      <!-- Lista dinámica donde se insertan los médicos desde JS -->
       <article>
         <h3>Lista de Médicos</h3>
         <ul id="listaDoctores"></ul>
       </article>
     </section>
 
+    <!-- SECCIÓN: GESTIÓN DE TURNOS -->
     <section id="seccion-turnos" class="panel-section">
       <h2>Gestión de Turnos</h2>
 
+      <!-- Tarjeta con formulario para crear/editar turnos -->
       <div id="tarjetaTurno">
         <h3>Editar / Crear Turno</h3>
+
         <form id="turnoForm">
             <input type="hidden" id="turnoId" />
 
+            <!-- Selección de paciente -->
             <div class="form-group">
                 <label for="selectPaciente">Paciente</label>
                 <select id="selectPaciente" required></select>
             </div>
             
+            <!-- Selección de médico -->
             <div class="form-group">
                 <label for="selectDoctorTurno">Médico</label>
                 <select id="selectDoctorTurno" required></select>
             </div>
 
+            <!-- Fecha del turno -->
             <div class="form-group">
                 <label for="dateTurno">Fecha</label>
                 <input type="date" id="dateTurno" required />
             </div>
 
+            <!-- Selección del horario disponible -->
             <div class="form-group">
                 <label for="timeTurno">Horario</label>
-                <select id="timeTurno" required>
-                </select>
+                <select id="timeTurno" required></select>
             </div>
 
+            <!-- Botones del turno -->
             <button id="guardarTurno" type="submit">Guardar Turno</button>
-            <button type="button" class="secundario" onclick="document.getElementById('turnoForm').reset(); document.getElementById('turnoId').value=''; document.getElementById('guardarTurno').textContent='Guardar Turno';">Limpiar</button>
+            <button type="button" class="secundario"
+              onclick="
+                document.getElementById('turnoForm').reset();
+                document.getElementById('turnoId').value='';
+                document.getElementById('guardarTurno').textContent='Guardar Turno';
+              ">
+              Limpiar
+            </button>
         </form>
       </div>
 
+      <!-- Lista donde se cargarán todos los turnos desde JS -->
       <article>
         <h3>Lista de Todos los Turnos</h3>
         <ul id="listaTurnos" style="width: 100%;"></ul>
       </article>
     </section>
 
+    <!-- SECCIÓN: GESTIÓN DE USUARIOS -->
     <section id="seccion-usuarios" class="panel-section">
       <h2>Gestión de Usuarios</h2>
 
+      <!-- Tarjeta con formulario para crear/editar usuarios (pacientes/admins) -->
       <div id="tarjetaPaciente">
         <form id="pacienteForm" autocomplete="off">
-  <input type="hidden" id="pacienteId" />
-  
-  <input id="pacNombre" placeholder="Nombre" required />
-  <input id="pacEmail" type="email" placeholder="Correo electrónico" required />
-  <input id="pacDni" placeholder="DNI" required />
 
-  <div>
-    <label for="pacRol">Rol</label>
-    <select id="pacRol" required>
-      <option value="paciente">Paciente</option>
-      <option value="admin">Admin</option>
-    </select>
-  </div>
+          <!-- ID oculto para edición -->
+          <input type="hidden" id="pacienteId" />
+          
+          <!-- Datos del usuario -->
+          <input id="pacNombre" placeholder="Nombre" required />
+          <input id="pacEmail" type="email" placeholder="Correo electrónico" required />
+          <input id="pacDni" placeholder="DNI" required />
 
-  <div style="display: flex; align-items: center;">
-    <input id="pacPassword" type="password" placeholder="Contraseña" required style="flex:1;" />
-    <button type="button" id="mostrarPassword" style="margin-left:6px; padding:4px 6px;">🔒</button>
-  </div>
-  
-  <div><button id="guardarPaciente" type="submit">Guardar</button></div>
-  <button type="button" class="secundario" onclick="document.getElementById('pacienteForm').reset(); document.getElementById('pacienteId').value='';">Limpiar</button>
-</form>
+          <!-- Selección de rol -->
+          <div>
+            <label for="pacRol">Rol</label>
+            <select id="pacRol" required>
+              <option value="paciente">Paciente</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <!-- Contraseña con botón para mostrar/ocultar -->
+          <div style="display: flex; align-items: center;">
+            <input id="pacPassword" type="password" placeholder="Contraseña" required style="flex:1;" />
+            <button type="button" id="mostrarPassword" style="margin-left:6px; padding:4px 6px;">🔒</button>
+          </div>
+          
+          <!-- Botones -->
+          <div><button id="guardarPaciente" type="submit">Guardar</button></div>
+
+          <button type="button" class="secundario"
+            onclick="
+              document.getElementById('pacienteForm').reset();
+              document.getElementById('pacienteId').value='';
+            ">
+            Limpiar
+          </button>
+        </form>
       </div>
 
+      <!-- Lista dinámica de usuarios -->
       <article>
         <h3>Lista de Usuarios</h3>
         <ul id="listaPacientes" style="width: 100%;"></ul>
       </article>
     </section>
 
+    <!-- SECCIÓN: DASHBOARD DE TURNOS -->
     <section id="seccion-dashboard" class="panel-section">
       <h2>Dashboard de Turnos</h2>
+
+      <!-- Contenedor del gráfico y estadísticas -->
       <div style="display: flex; gap: 30px; justify-content: center; align-items: flex-start;">
-          <div id="dashboardInfo" style="min-width: 250px;">
-              </div>
+
+          <!-- Datos numéricos -->
+          <div id="dashboardInfo" style="min-width: 250px;"></div>
+
+          <!-- Gráfico generado por Chart.js -->
           <div style="width: 100%; max-width: 400px; height: 300px;">
               <canvas id="graficoTurnos"></canvas> 
           </div>
@@ -150,6 +213,7 @@
 
   </main>
 
+  <!-- Carga del archivo principal de lógica del panel admin -->
   <script src="./.js/admin.js"></script>
 </body>
 </html>

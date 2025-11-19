@@ -1,3 +1,4 @@
+/* Marca del navbar: texto destacado del logo */
 .navbar-brand {
     color: white;
     font-size: 1.25rem;
@@ -5,11 +6,13 @@
     font-weight: bold;
 }
 
+/* Título con el nombre de bienvenida centrado */
 #welcomeName {
     text-align: center;
     margin-bottom: 25px;
 }
 
+/* Formulario para reservar: distribución horizontal y adaptable */
 #reserveForm {
     display: flex;
     gap: 10px;
@@ -18,6 +21,7 @@
     flex-wrap: wrap;
 }
 
+/* Cada campo del formulario ocupa espacio flexible */
 #reserveForm > div {
     flex-grow: 1;
     min-width: 180px;
@@ -25,11 +29,13 @@
     margin: 0 auto;
 }
 
+/* Botón de enviar del formulario */
 #reserveForm button[type="submit"] {
     padding: 10px 20px;
     height: 40px;
 }
 
+/* Contenedor principal de la sección, con caja blanca */
 .container > div:nth-child(2) > div:nth-child(1) {
     background: #fff;
     padding: 20px 30px;
@@ -38,13 +44,14 @@
     margin-bottom: 30px;
 }
 
+/* Títulos de secciones */
 h5 {
     font-size: 18px;
     font-weight: bold;
     margin: 0 0 15px;
 }
 
-
+/* Contenedor de tarjetas de turnos, en forma de grilla */
 .turnos-container {
     display: grid;
     gap: 20px;
@@ -52,16 +59,19 @@ h5 {
     margin-top: 20px;
 }
 
+/* Tarjeta individual de turno */
 .turno-card {
     transition: transform .2s;
     border-left: 5px solid;
 }
 
+/* Efecto al pasar el mouse */
 .turno-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, .15);
 }
 
+/* Título dentro de la tarjeta */
 .turno-card h4 {
     margin-top: 0;
     font-size: 1.2em;
@@ -70,20 +80,22 @@ h5 {
     margin-bottom: 15px;
 }
 
+/* Texto dentro de la tarjeta */
 .turno-card p {
     margin: 5px 0;
     font-size: .95em;
 }
 
+/* Botón dentro de la tarjeta */
 .turno-card button {
     margin-top: 15px;
     width: 100%;
 }
 
+/* Colores según estado del turno */
 .estado-pendiente {
     border-left-color: #f1c40f;
 }
-
 .estado-pendiente .badge {
     color: #f1c40f;
 }
@@ -91,7 +103,6 @@ h5 {
 .estado-confirmado {
     border-left-color: #2ecc71;
 }
-
 .estado-confirmado .badge {
     color: #2ecc71;
 }
@@ -100,11 +111,11 @@ h5 {
     border-left-color: #e74c3c;
     opacity: .7;
 }
-
 .estado-cancelado .badge {
     color: #e74c3c;
 }
 
+/* Mensaje dentro de la tarjeta cuando hay info extra */
 .estado-mensaje {
     display: block;
     margin-top: 15px;
@@ -115,6 +126,7 @@ h5 {
     padding: 8px 0;
 }
 
+/* Ajustes para pantallas chicas */
 @media (max-width: 600px) {
     #reserveForm {
         flex-direction: column;

@@ -1,77 +1,110 @@
-const API = "https://6915deb7465a9144626df544.mockapi.io/usuarios";
+// ---------------------------
+// API donde están guardados los usuarios
+// ---------------------------
+const API_USUARIOS = "https://6915deb7465a9144626df544.mockapi.io/usuarios";
 
-const loginForm = document.getElementById("loginForm");
-const registroForm = document.getElementById("registroForm");
+// ---------------------------
+// Tomamos los formularios del HTML
+// ---------------------------
+const formularioLogin = document.getElementById("loginForm");
+const formularioRegistro = document.getElementById("registroForm");
 
+// ---------------------------
+// BOTÓN: Pasar de Login → Registro
+// Oculta el login y muestra el formulario de registro
+// ---------------------------
 document.getElementById("irARegistro").addEventListener("click", () => {
-    loginForm.style.display = "none";
-    registroForm.style.display = "block";
+    formularioLogin.style.display = "none";
+    formularioRegistro.style.display = "block";
 });
 
+// ---------------------------
+// BOTÓN: Pasar de Registro → Login
+// Vuelve a mostrar el login
+// ---------------------------
 document.getElementById("irALogin").addEventListener("click", () => {
-    registroForm.style.display = "none";
-    loginForm.style.display = "block";
+    formularioRegistro.style.display = "none";
+    formularioLogin.style.display = "block";
 });
 
-loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+// =========================================================
+//               PROCESO DE LOGIN
+// =========================================================
+formularioLogin.addEventListener("submit", async (e) => {
+    e.preventDefault(); // Evita recargar la página
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    // Tomamos los datos que escribió el usuario
+    const correo = document.getElementById("email").value.trim();
+    const contrasena = document.getElementById("password").value.trim();
 
-    const res = await fetch(API);
-    const usuarios = await res.json();
+    // Traemos TODOS los usuarios de la API
+    const respuesta = await fetch(API_USUARIOS);
+    const listaUsuarios = await respuesta.json();
 
-    const encontrado = usuarios.find(u => u.email === email && u.password === password);
+    // Buscamos si hay un usuario con ese email y esa contraseña
+    const usuarioEncontrado = listaUsuarios.find(u => u.email === correo && u.password === contrasena);
 
-    if (!encontrado) {
+    // Si no coincide, mostramos error
+    if (!usuarioEncontrado) {
         alert("Email o contraseña incorrectos");
         return;
     }
 
-    sessionStorage.setItem("usuario", JSON.stringify(encontrado));
+    // Si existe, lo guardamos en sessionStorage (sesión actual)
+    sessionStorage.setItem("usuario", JSON.stringify(usuarioEncontrado));
 
-    if (encontrado.rol === "admin") {
+    // Redirigimos según el rol
+    if (usuarioEncontrado.rol === "admin") {
         window.location.href = "admin.html";
     } else {
         window.location.href = "user.html";
     }
 });
 
-registroForm.addEventListener("submit", async (e) => {
+// =========================================================
+//               PROCESO DE REGISTRO
+// =========================================================
+formularioRegistro.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // Datos escritos por el usuario en el registro
     const nombre = document.getElementById("regNombre").value.trim();
-    const email = document.getElementById("regEmail").value.trim();
+    const correo = document.getElementById("regEmail").value.trim();
     const dni = document.getElementById("regDni").value.trim();
-    const password = document.getElementById("regPassword").value.trim();
+    const contrasena = document.getElementById("regPassword").value.trim();
 
-    const res = await fetch(API);
-    const usuarios = await res.json();
+    // Traemos todos los usuarios para verificar que no exista el email
+    const respuesta = await fetch(API_USUARIOS);
+    const listaUsuarios = await respuesta.json();
 
-    const existe = usuarios.find(u => u.email === email);
+    // Revisamos si el email ya fue usado
+    const existeUsuario = listaUsuarios.find(u => u.email === correo);
 
-    if (existe) {
+    if (existeUsuario) {
         alert("Ese correo ya está registrado");
         return;
     }
 
-    const nuevo = {
+    // Creamos el nuevo usuario con rol por defecto "paciente"
+    const nuevoUsuario = {
         nombre,
-        email,
+        email: correo,
         dni,
-        password,
+        password: contrasena,
         rol: "paciente"
     };
 
-    await fetch(API, {
+    // Enviamos el usuario nuevo a la API
+    await fetch(API_USUARIOS, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(nuevo)
+        body: JSON.stringify(nuevoUsuario)
     });
 
+    // Avisamos que se registró ok
     alert("Registro exitoso. Iniciá sesión.");
 
-    registroForm.style.display = "none";
-    loginForm.style.display = "block";
+    // Volvemos a mostrar el login
+    formularioRegistro.style.display = "none";
+    formularioLogin.style.display = "block";
 });

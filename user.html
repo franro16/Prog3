@@ -5,43 +5,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reservar Turno - Sistema Médico</title>
-
     <link rel="stylesheet" href="./.css/Gral.css" />
-    <link rel="stylesheet" href="./.css/user.css" /> </head>
+    <link rel="stylesheet" href="./.css/user.css" />
+</head>
 
 <body>
     <div class="logo-container">
-        <img src="Resources\utn-logo.png" alt="Logo de la Clínica" class="app-logo">
+        <img src="Resources/utn-logo.png" alt="Logo de la Clínica" class="app-logo">
     </div>
-    
+
+    <!-- BLOQUE: Control de sesión -->
     <script>
         try {
-            const usuario = JSON.parse(sessionStorage.getItem("usuario"));
-            
-            if (!usuario || usuario.rol !== "paciente") {
-                
+            const usuarioActual = JSON.parse(sessionStorage.getItem("usuario"));
+
+            if (!usuarioActual || usuarioActual.rol !== "paciente") {
                 window.location.href = "index.html";
             }
-        } catch (e) {            
+        } catch (error) {
             window.location.href = "index.html";
         }
     </script>
-    
+
+    <!-- HEADER: Botón de cerrar sesión -->
     <header>
         <a id="logoutBtn">
             <button class="secundario">Cerrar sesión</button>
         </a>
     </header>
-    
 
     <main>
-
+        <!-- Nombre del usuario logueado -->
         <h2 id="welcomeName">Bienvenido/a</h2>
 
+        <!-- Contenedor de alertas dinámicas -->
         <div id="alertContainer"></div>
 
         <h3>Reservar un turno</h3>
 
+        <!-- FORMULARIO: Solicitud de turno -->
         <form id="reserveForm">
 
             <div class="form-group">
@@ -58,29 +60,21 @@
                 <label for="time">Seleccione un horario</label>
                 <select id="time" required>
                     <option value="">Seleccione hora</option>
-                    <option value="08:00">08:00</option>
-                    <option value="09:00">09:00</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
                 </select>
             </div>
 
             <button type="submit">Solicitar turno</button>
-
         </form>
 
         <hr>
 
         <h3>Mis Turnos</h3>
-        <div id="misTurnos" class="turnos-container">
-            </div>
 
-
+        <!-- Contenedor dinámico para los turnos del paciente -->
+        <div id="misTurnos" class="turnos-container"></div>
     </main>
 
+    <!-- Script principal del usuario -->
     <script src="./.js/user.js"></script>
 </body>
 

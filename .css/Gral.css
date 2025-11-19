@@ -1,3 +1,4 @@
+/* 🎨 Colores, estilos glass y valores reutilizables */
 :root {
   --color-primario: #0078d4;
   --color-secundario: #00b894;
@@ -5,10 +6,11 @@
   --color-texto: #333;
   --color-blanco: #fff;
 
-  --glass-bg: rgba(255, 255, 255, 0.2); 
-  --glass-blur: blur(16px); 
-  --glass-border: 1px solid rgba(255, 255, 255, 0.8); 
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25); 
+  /* Configuración del efecto glass */
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-blur: blur(16px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 
   --color-borde: #dce3eb;
   --color-error: #e74c3c;
@@ -16,6 +18,7 @@
   --transicion: 0.3s;
 }
 
+/* Reset básico para que todo el sitio use la misma base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,6 +26,7 @@
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* Fondo general y centrado del contenido */
 body {
   background: var(--color-fondo);
   color: var(--color-texto);
@@ -34,6 +38,7 @@ body {
   padding: 20px;
 }
 
+/* Contenedor principal con estilo glass */
 main {
   width: 100%;
   max-width: 800px;
@@ -44,22 +49,26 @@ main {
   box-shadow: var(--glass-shadow);
 }
 
+/* Formularios alineados en columna */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Títulos centrados */
 h1, h2, h3 {
   text-align: center;
   color: var(--color-primario);
 }
 
+/* Estilo de etiquetas de los formularios */
 label {
   font-weight: 600;
   color: #005ea8;
 }
 
+/* Recuadro principal para pantallas de inicio o login */
 .pantalla {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -76,12 +85,14 @@ label {
   gap: 20px;
 }
 
+/* Cada bloque interno dentro de pantalla */
 .pantalla > div {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
+/* Inputs, selects y textarea con estilo suave */
 input,
 select,
 textarea {
@@ -95,6 +106,7 @@ textarea {
   color: var(--color-texto);
 }
 
+/* Efecto de enfoque en campos del formulario */
 input:focus,
 select:focus,
 textarea:focus {
@@ -103,6 +115,7 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.2);
 }
 
+/* Botones principales */
 button {
   background: var(--color-primario);
   color: var(--color-blanco);
@@ -116,20 +129,22 @@ button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Hover del botón */
 button:hover {
   background: #005fa3;
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Botón secundario */
 button.secundario {
   background: var(--color-secundario);
 }
-
 button.secundario:hover {
   background: #009a7a;
 }
 
+/* Link normal */
 a {
   color: var(--color-primario);
   text-decoration: none;
@@ -137,11 +152,11 @@ a {
   text-align: center;
   display: inline-block;
 }
-
 a:hover {
   color: var(--color-secundario);
 }
 
+/* Botón estilo link */
 .link-btn {
   background: none;
   border: none;
@@ -151,15 +166,13 @@ a:hover {
   cursor: pointer;
   text-decoration: underline;
   transition: color var(--transicion);
-  display: inline;
 }
-
 .link-btn:hover {
   color: #009a7a;
   text-decoration: none;
-  background: none;
 }
 
+/* Carteles de error y éxito */
 .alerta {
   background: var(--color-error);
   color: #fff;
@@ -179,6 +192,7 @@ a:hover {
   margin-bottom: 10px;
 }
 
+/* Tarjeta de turno con efecto glass */
 .turno-card {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
@@ -205,7 +219,7 @@ a:hover {
   width: 100%;
 }
 
-
+/* Contenedores generales */
 .container,
 .container-fluid {
   width: 90%;
@@ -213,7 +227,7 @@ a:hover {
   padding: 15px;
 }
 
-
+/* Ajustes en pantallas chicas */
 @media(max-width: 600px) {
   .pantalla {
     max-width: 90%;
@@ -224,29 +238,31 @@ a:hover {
   }
 }
 
+/* Logo fijo en esquina superior izquierda */
 .logo-container {
-    position: fixed; 
-    top: 20px;       
-    left: 20px;      
+    position: fixed;
+    top: 20px;
+    left: 20px;
     z-index: 1000;
 }
 
 .app-logo {
-    width: 200px; 
-    height: auto; 
+    width: 200px;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.5); 
+    background: rgba(255, 255, 255, 0.5);
     padding: 5px;
 }
 
-
+/* Logo más chico en móviles */
 @media(max-width: 600px) {
     .app-logo {
         width: 60px;
     }
 }
 
+/* Créditos abajo a la derecha */
 .creadores {
     position: fixed;
     bottom: 10px;
@@ -259,7 +275,6 @@ a:hover {
 
 .creadores strong {
     display: block;
-    margin-bottom: 3px;
     font-size: 1em;
     color: #555;
 }

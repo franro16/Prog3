@@ -1,14 +1,17 @@
+/* Fondo general de la página */
 body {
     background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
     min-height: 100vh;
 }
 
+/* Contenedor principal del panel */
 main#mainContent {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Encabezado del panel admin */
 .header-admin {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
@@ -20,11 +23,13 @@ main#mainContent {
     margin-bottom: 20px;
 }
 
+/* Título del encabezado */
 .header-admin h1 {
     color: #005ea8;
     margin-bottom: 10px;
 }
 
+/* Barra de navegación del panel */
 .nav-admin {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
@@ -41,6 +46,7 @@ main#mainContent {
     border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+/* Botones de navegación */
 .nav-admin button {
     background: rgba(255, 255, 255, 0.7);
     color: #0078d4;
@@ -59,6 +65,7 @@ main#mainContent {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Subtítulos generales */
 h2, h3 {
     color: #005ea8;
     margin-bottom: 15px;
@@ -66,7 +73,7 @@ h2, h3 {
     padding-bottom: 5px;
 }
 
-
+/* Tarjetas contenedoras (doctor, turno, paciente) */
 #tarjetaDoctor, #tarjetaTurno, #tarjetaPaciente {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
@@ -78,7 +85,7 @@ h2, h3 {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-
+/* Campos de formularios */
 #doctorForm input, #doctorForm select, 
 #turnoForm input, #turnoForm select,
 #pacienteForm input, #pacienteForm select {
@@ -92,6 +99,7 @@ h2, h3 {
     transition: border-color 0.3s, background 0.3s;
 }
 
+/* Efecto focus en inputs */
 #doctorForm input:focus, #doctorForm select:focus, 
 #turnoForm input:focus, #turnoForm select:focus,
 #pacienteForm input:focus, #pacienteForm select:focus {
@@ -100,7 +108,7 @@ h2, h3 {
     background: #fff;
 }
 
-
+/* Botones principales (guardar/enviar) */
 button[type="submit"], #guardarDoctor, #guardarTurno, #guardarPaciente {
     background: #0078d4;
     color: white;
@@ -112,11 +120,15 @@ button[type="submit"], #guardarDoctor, #guardarTurno, #guardarPaciente {
     transition: background 0.3s, transform 0.2s;
 }
 
-button[type="submit"]:hover, #guardarDoctor:hover, #guardarTurno:hover, #guardarPaciente:hover {
+button[type="submit"]:hover,
+#guardarDoctor:hover,
+#guardarTurno:hover,
+#guardarPaciente:hover {
     background: #005ea8;
     transform: translateY(-1px);
 }
 
+/* Botones secundarios */
 .secundario {
     background: #bdc3c7;
     color: #333;
@@ -132,15 +144,16 @@ button[type="submit"]:hover, #guardarDoctor:hover, #guardarTurno:hover, #guardar
     background: #95a5a6;
 }
 
+/* Lista de elementos generados */
 ul {
     list-style: none;
     padding: 0;
     margin-top: 25px;
 }
 
-
+/* Cada ítem de la lista */
 ul li {
-    background: rgba(255, 255, 255, 0.3); 
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     margin: 10px auto;
@@ -152,7 +165,7 @@ ul li {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
     color: #333;
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -163,61 +176,57 @@ ul li:hover {
     background: rgba(255, 255, 255, 0.5);
 }
 
+/* Secciones del panel (ocultas por defecto) */
 .panel-section {
     display: none;
 }
-
 .panel-section.active {
     display: block;
 }
 
-
+/* Información del lado izquierdo del item */
 ul li > div:first-child {
     flex-grow: 1;
     padding-right: 15px;
     text-align: left;
     min-width: 50%;
-    
-    
     display: flex;
     flex-direction: column;
-    gap: 4px; 
+    gap: 4px;
 }
-
 
 ul li > div:first-child p {
     margin: 0;
-    font-size: 0.95em; 
+    font-size: 0.95em;
 }
-
 
 ul li > div:first-child strong {
     font-weight: 600;
     margin-right: 5px;
-    color: #005ea8; 
+    color: #005ea8;
 }
 
-
+/* Ajuste en items de turnos */
 .turno-item > div:first-child {
     min-width: 50%;
 }
 
-
+/* Contenedor de botones en cada turno */
 .turno-acciones {
     display: flex;
     align-items: center;
-    gap: 8px; 
+    gap: 8px;
     flex-shrink: 0;
-    min-width: 280px; 
-    justify-content: flex-end; 
+    min-width: 280px;
+    justify-content: flex-end;
 }
 
-
+/* Botones dentro del panel de acciones */
 .turno-acciones button {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    padding: 8px 14px; 
+    padding: 8px 14px;
     font-size: 0.9em;
     font-weight: 600;
     color: white;
@@ -235,15 +244,11 @@ ul li > div:first-child strong {
     transform: translateY(-1px);
 }
 
-/* Colores de botones */
-.btn-editar {
-    background-color: #ffb347; 
-}
-.btn-eliminar {
-    background-color: #ff6b6b; 
-}
+/* Colores de botones de acción */
+.btn-editar { background-color: #ffb347; }
+.btn-eliminar { background-color: #ff6b6b; }
 
-
+/* Select del estado de turno */
 .turno-acciones select.select-estado {
     padding: 6px 10px;
     border-radius: 6px;
@@ -252,21 +257,19 @@ ul li > div:first-child strong {
     height: 38px;
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 120, 212, 0.3);
-    align-self: center; 
 }
 
-
-
-
+/* Caja visual del ítem de turno */
 .turno-item {
-    border: 1px solid rgba(255, 255, 255, 0.5); 
-    background: rgba(255, 255, 255, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     margin-bottom: 10px !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* Estilos de etiquetas según estado */
 .badge-estado {
     display: inline-block;
     padding: 2px 6px;
@@ -275,12 +278,12 @@ ul li > div:first-child strong {
     font-weight: 700;
 }
 
-.estado-pendiente .badge-estado { color: #f1c40f; font-weight: 700; background: rgba(241, 196, 15, 0.1); padding: 4px 8px; border-radius: 4px; }
-.estado-confirmado .badge-estado { color: #2ecc71; font-weight: 700; background: rgba(46, 204, 113, 0.1); padding: 4px 8px; border-radius: 4px; }
-.estado-cancelado .badge-estado { color: #e74c3c; font-weight: 700; background: rgba(231, 76, 60, 0.1); padding: 4px 8px; border-radius: 4px; }
-.estado-finalizado .badge-estado { color: #3498db; font-weight: 700; background: rgba(52, 152, 219, 0.1); padding: 4px 8px; border-radius: 4px; }
+.estado-pendiente .badge-estado { color: #f1c40f; background: rgba(241, 196, 15, 0.1); }
+.estado-confirmado .badge-estado { color: #2ecc71; background: rgba(46, 204, 113, 0.1); }
+.estado-cancelado .badge-estado { color: #e74c3c; background: rgba(231, 76, 60, 0.1); }
+.estado-finalizado .badge-estado { color: #3498db; background: rgba(52, 152, 219, 0.1); }
 
-
+/* Ajustes de inputs del paciente */
 #pacienteForm input[type="text"],
 #pacienteForm input[type="email"],
 #pacienteForm input[type="password"],
@@ -294,6 +297,7 @@ ul li > div:first-child strong {
     border: 1px solid #ccc;
 }
 
+/* Botón mostrar contraseña */
 #mostrarPassword {
     padding: 8px 10px;
     border: 1px solid rgba(0, 120, 212, 0.3);
@@ -309,12 +313,11 @@ ul li > div:first-child strong {
     background: rgba(226, 240, 255, 0.9);
 }
 
-
-
+/* Contenedor interno del dashboard */
 #seccion-dashboard > div {
-    display: flex; 
-    gap: 30px; 
-    justify-content: center; 
+    display: flex;
+    gap: 30px;
+    justify-content: center;
     align-items: flex-start;
     
     background: rgba(255, 255, 255, 0.3);
@@ -326,11 +329,12 @@ ul li > div:first-child strong {
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+/* Texto del dashboard */
 #dashboardInfo {
     color: #333;
 }
 
-
+/* Responsivo para pantallas chicas */
 @media(max-width: 750px) {
     ul li {
         flex-direction: column;
@@ -338,42 +342,28 @@ ul li > div:first-child strong {
         align-items: flex-start;
         max-width: 95%;
     }
-    
-    ul li > div:first-child {
-        width: 100%;
-        padding-right: 0;
-        min-width: auto;
-    }
-    
+
     .turno-acciones {
         justify-content: flex-start;
         width: 100%;
-        min-width: auto;
         flex-wrap: wrap;
-    }
-    
-    .turno-acciones select.select-estado,
-    .turno-acciones button {
-        height: auto;
     }
 
     .nav-admin {
         padding: 10px;
     }
-    
+
     .nav-admin button {
         flex-grow: 1;
-        text-align: center;
     }
 
     #seccion-dashboard > div {
         flex-direction: column;
-        align-items: center;
         gap: 20px;
     }
-    
-    #dashboardInfo, #seccion-dashboard > div > div {
+
+    #dashboardInfo, 
+    #seccion-dashboard > div > div {
         width: 100% !important;
-        max-width: 100% !important;
     }
 }

@@ -5,40 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Turnos Médicos</title>
     <link rel="stylesheet" href=".css/Gral.css">
-    <style>
-        .creadores {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-size: 0.8em;
-            color: #777;
-            text-align: right;
-            line-height: 1.4;
-        }
-        .creadores strong {
-            display: block;
-            margin-bottom: 3px;
-            font-size: 1em;
-            color: #555;
-        }
-    </style>
 </head>
 <body>
 
     <div class="logo-container">
-        <img src="Resources\utn-logo.png" alt="Logo de la Clínica" class="app-logo">
+        <img src="Resources/utn-logo.png" alt="Logo de la Clínica" class="app-logo">
     </div>
     
+    <!-- FORMULARIO DE INICIO DE SESIÓN -->
     <form id="loginForm" class="pantalla">
         <h3>Iniciar sesión</h3>
 
         <div>
-            <label>Email</label>
+            <label for="email">Correo electrónico</label>
             <input id="email" type="email" required>
         </div>
 
         <div>
-            <label>Contraseña</label>
+            <label for="password">Contraseña</label>
             <input id="password" type="password" required>
         </div>
 
@@ -50,27 +34,27 @@
         </p>
     </form>
 
-
+    <!-- FORMULARIO DE REGISTRO -->
     <form id="registroForm" class="pantalla" style="display:none;">
         <h3>Registrarse</h3>
 
         <div>
-            <label>Nombre</label>
+            <label for="regNombre">Nombre completo</label>
             <input id="regNombre" required>
         </div>
 
         <div>
-            <label>Email</label>
+            <label for="regEmail">Correo electrónico</label>
             <input id="regEmail" type="email" required>
         </div>
 
         <div>
-            <label>DNI</label>
+            <label for="regDni">DNI</label>
             <input id="regDni" required>
         </div>
 
         <div>
-            <label>Contraseña</label>
+            <label for="regPassword">Contraseña</label>
             <input id="regPassword" type="password" required>
         </div>
 
@@ -86,11 +70,12 @@
         <strong>Desarrollado por:</strong>
         Victoria Basso Peretti<br>
         Heredia Agustin<br>
-        Romero Franco Isaias
-        <strong>ChatGPT y Gemini
-            <br>Gracias por tanto, perdon por tan poco</strong>
+        Romero Franco Isaias<br>
+        <strong>ChatGPT y Gemini <br>
+        Gracias por tanto, perdón por tan poco</strong>
     </div>
 
+    <!-- JS de login y registro -->
     <script src=".js/index.js"></script>
 </body>
 </html>
